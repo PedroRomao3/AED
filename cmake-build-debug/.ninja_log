@@ -1,0 +1,10 @@
+# ninja log v5
+0	543	6889183513592204	CMakeFiles/untitled1.dir/main.cpp.obj	23484d928adf0b2c
+29	705	6889183515212565	CMakeFiles/untitled1.dir/Student.cpp.obj	ebe2be193c16bffb
+151	1359	6889183521744770	CMakeFiles/untitled1.dir/Uni.cpp.obj	26a2414265b9bfec
+46	679	6889184326454046	CMakeFiles/untitled1.dir/Student.cpp.obj	ebe2be193c16bffb
+3	559	6889186482511200	CMakeFiles/untitled1.dir/Student.cpp.obj	ebe2be193c16bffb
+31	687	6889186483791961	CMakeFiles/untitled1.dir/Lesson.cpp.obj	961ab267ee023e66
+67	898	6889186485894266	CMakeFiles/untitled1.dir/Class.cpp.obj	1705d8e87bea0ae7
+98	1143	6889186488344822	CMakeFiles/untitled1.dir/Uni.cpp.obj	26a2414265b9bfec
+1154	1784	6889186494725921	untitled1.exe	1d4d187eb27ce2bf

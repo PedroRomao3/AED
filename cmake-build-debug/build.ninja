@@ -61,14 +61,20 @@ build CMakeFiles/untitled1.dir/Student.cpp.obj: CXX_COMPILER__untitled1_Debug C$
   OBJECT_DIR = CMakeFiles\untitled1.dir
   OBJECT_FILE_DIR = CMakeFiles\untitled1.dir
 
+build CMakeFiles/untitled1.dir/Lesson.cpp.obj: CXX_COMPILER__untitled1_Debug C$:/Users/pedro/CLionProjects/AEDproj/Lesson.cpp || cmake_object_order_depends_target_untitled1
+  DEP_FILE = CMakeFiles\untitled1.dir\Lesson.cpp.obj.d
+  FLAGS = -g -std=gnu++14
+  OBJECT_DIR = CMakeFiles\untitled1.dir
+  OBJECT_FILE_DIR = CMakeFiles\untitled1.dir
+
 build CMakeFiles/untitled1.dir/Class.cpp.obj: CXX_COMPILER__untitled1_Debug C$:/Users/pedro/CLionProjects/AEDproj/Class.cpp || cmake_object_order_depends_target_untitled1
   DEP_FILE = CMakeFiles\untitled1.dir\Class.cpp.obj.d
   FLAGS = -g -std=gnu++14
   OBJECT_DIR = CMakeFiles\untitled1.dir
   OBJECT_FILE_DIR = CMakeFiles\untitled1.dir
 
-build CMakeFiles/untitled1.dir/Uc.cpp.obj: CXX_COMPILER__untitled1_Debug C$:/Users/pedro/CLionProjects/AEDproj/Uc.cpp || cmake_object_order_depends_target_untitled1
-  DEP_FILE = CMakeFiles\untitled1.dir\Uc.cpp.obj.d
+build CMakeFiles/untitled1.dir/Uni.cpp.obj: CXX_COMPILER__untitled1_Debug C$:/Users/pedro/CLionProjects/AEDproj/Uni.cpp || cmake_object_order_depends_target_untitled1
+  DEP_FILE = CMakeFiles\untitled1.dir\Uni.cpp.obj.d
   FLAGS = -g -std=gnu++14
   OBJECT_DIR = CMakeFiles\untitled1.dir
   OBJECT_FILE_DIR = CMakeFiles\untitled1.dir
@@ -81,7 +87,7 @@ build CMakeFiles/untitled1.dir/Uc.cpp.obj: CXX_COMPILER__untitled1_Debug C$:/Use
 #############################################
 # Link the executable untitled1.exe
 
-build untitled1.exe: CXX_EXECUTABLE_LINKER__untitled1_Debug CMakeFiles/untitled1.dir/main.cpp.obj CMakeFiles/untitled1.dir/Student.cpp.obj CMakeFiles/untitled1.dir/Class.cpp.obj CMakeFiles/untitled1.dir/Uc.cpp.obj
+build untitled1.exe: CXX_EXECUTABLE_LINKER__untitled1_Debug CMakeFiles/untitled1.dir/main.cpp.obj CMakeFiles/untitled1.dir/Student.cpp.obj CMakeFiles/untitled1.dir/Lesson.cpp.obj CMakeFiles/untitled1.dir/Class.cpp.obj CMakeFiles/untitled1.dir/Uni.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\untitled1.dir

@@ -4,17 +4,19 @@
 #ifndef UNTITLED1_STUDENT_H
 #define UNTITLED1_STUDENT_H
 #include <string>
+#include "Lesson.h"
+
 using namespace std;
 
 class Student {
     string name;
     int code;
+    vector<Lesson> timetable;
 
 public:
-    Student(string x, int y){
-        this->name = x;
-        this->code = y;
-    }
+    Student(string name, int code);
+    Student(string name, int code, vector<Lesson> timetable);
+    Student operator = (Student s1);
 
 };
 

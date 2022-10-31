@@ -1,35 +1,31 @@
 //
-// Created by pedro on 30/10/2022.
+// Created by pedro on 31/10/2022.
 //
 
 #ifndef UNTITLED1_CLASS_H
 #define UNTITLED1_CLASS_H
-#include <vector>
+
 #include <string>
-#include "Student.h"
+#include "Lesson.h"
 
 using namespace std;
 
-
 class Class {
-    string code;
-    vector<Student> vector;
-    float beginning;
-    float duration;
-    string type;
-    string day;
+    string classCode;
+    vector<Lesson> timetable;
+
 public:
-    Class(string x, std::vector<Student> y, float z, float i, string t, string h){
-        this->code = x;
-        this->vector = y;
-        this->beginning = z;
-        this->duration = i;
-        this->type = t;
-        this->day = h;
-    }
+    Class(string classCode);
 
+    Class(string classCode, vector<Lesson> timetable);
 
+    const string &getClassCode() const;
+
+    void setClassCode(const string &classCode);
+
+    const vector<Lesson> &getTimetable() const;
+
+    void setTimetable(const vector<Lesson> &timetable);
 };
-
 
 #endif //UNTITLED1_CLASS_H
