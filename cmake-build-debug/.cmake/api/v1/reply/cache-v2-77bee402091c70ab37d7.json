@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/pedro/CLionProjects/untitled1/cmake-build-debug"
+			"value" : "c:/Users/pedro/CLionProjects/AEDproj/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -623,7 +623,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/pedro/CLionProjects/untitled1"
+			"value" : "C:/Users/pedro/CLionProjects/AEDproj"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1239,7 +1239,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/pedro/CLionProjects/untitled1/cmake-build-debug"
+			"value" : "C:/Users/pedro/CLionProjects/AEDproj/cmake-build-debug"
 		},
 		{
 			"name" : "untitled1_IS_TOP_LEVEL",
@@ -1263,7 +1263,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/pedro/CLionProjects/untitled1"
+			"value" : "C:/Users/pedro/CLionProjects/AEDproj"
 		}
 	],
 	"kind" : "cache",

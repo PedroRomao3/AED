@@ -17,13 +17,15 @@ class Class {
     float beginning;
     float duration;
     string type;
+    string day;
 public:
-    Class(string x, std::vector<Student> y, float z, float i, string t ){
+    Class(string x, std::vector<Student> y, float z, float i, string t, string h){
         this->code = x;
         this->vector = y;
         this->beginning = z;
         this->duration = i;
         this->type = t;
+        this->day = h;
     }
 
 
