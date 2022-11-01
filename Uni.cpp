@@ -12,10 +12,14 @@ void Uni::setStudents(const vector<Student> &students) {
     Uni::students = students;
 }
 
-const vector<Class> &Uni::getClasses() const {
+const set<Class> &Uni::getClasses() const {
     return classes;
 }
 
-void Uni::setClasses(const vector<Class> &classes) {
+void Uni::setClasses(const set<Class> &classes) {
     Uni::classes = classes;
+}
+
+void Uni::addto(Lesson l){
+    Uni::lessons.push_back(l);
 }

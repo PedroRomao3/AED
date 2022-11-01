@@ -11,17 +11,18 @@
 
 class Uni {
     vector<Student> students;
-    vector<Class> classes;
+    set<Class> classes;
     vector<Lesson> lessons;
 public:
     const vector<Student> &getStudents() const;
 
     void setStudents(const vector<Student> &students);
 
-    const vector<Class> &getClasses() const;
+    const set<Class> &getClasses() const;
 
-    void setClasses(const vector<Class> &classes);
+    void setClasses(const set<Class> &classes);
 
+    void addto(Lesson l);
 
 };
 

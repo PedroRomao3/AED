@@ -24,3 +24,9 @@ void Class::setTimetable(const vector<Lesson> &timetable) {
 Class::Class(string classCode) {
     this->classCode = classCode;
 }
+
+Class Class::operator=(Class s1) {
+    this->classCode = s1.classCode;
+    this->timetable = s1.timetable;
+    return *this;
+}
