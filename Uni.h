@@ -14,6 +14,7 @@ class Uni {
     vector<Class> classes;
     vector<Lesson> lessons;
 public:
+    Uni();
     const vector<Student> &getStudents() const;
 
     void setStudents(const vector<Student> &students);
@@ -21,6 +22,8 @@ public:
     const vector<Class> &getClasses() const;
 
     void setClasses(const vector<Class> &classes);
+
+    Uni operator = (Uni uni1);
 
 
 };
