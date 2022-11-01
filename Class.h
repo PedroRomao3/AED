@@ -26,6 +26,9 @@ public:
     const vector<Lesson> &getTimetable() const;
 
     void setTimetable(const vector<Lesson> &timetable);
+
+    Class operator=(Class s1);
+
 };
 
 #endif //UNTITLED1_CLASS_H

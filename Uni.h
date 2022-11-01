@@ -11,7 +11,7 @@
 
 class Uni {
     vector<Student> students;
-    vector<Class> classes;
+    set<Class> classes;
     vector<Lesson> lessons;
 public:
     Uni();
@@ -19,12 +19,16 @@ public:
 
     void setStudents(const vector<Student> &students);
 
-    const vector<Class> &getClasses() const;
+    const set<Class> &getClasses() const;
 
-    void setClasses(const vector<Class> &classes);
+    void setClasses(const set<Class> &classes);
 
+<<<<<<< HEAD
     Uni operator = (Uni uni1);
 
+=======
+    void addto(Lesson l);
+>>>>>>> 11aaa86dbca347187d95b26ddffd3e520ea415fd
 
 };
 

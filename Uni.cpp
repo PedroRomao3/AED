@@ -12,14 +12,15 @@ void Uni::setStudents(const vector<Student> &students) {
     Uni::students = students;
 }
 
-const vector<Class> &Uni::getClasses() const {
+const set<Class> &Uni::getClasses() const {
     return classes;
 }
 
-void Uni::setClasses(const vector<Class> &classes) {
+void Uni::setClasses(const set<Class> &classes) {
     Uni::classes = classes;
 }
 
+<<<<<<< HEAD
 Uni::Uni() {
     vector<Student> noth;
     vector<Class> noth1;
@@ -33,4 +34,8 @@ Uni Uni::operator=(Uni uni1) {
     this->classes = uni1.classes;
     this->lessons = uni1.lessons;
     return *this;
+=======
+void Uni::addto(Lesson l){
+    Uni::lessons.push_back(l);
+>>>>>>> 11aaa86dbca347187d95b26ddffd3e520ea415fd
 }
