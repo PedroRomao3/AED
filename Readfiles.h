@@ -45,7 +45,30 @@ void readfile1(string file, Uni *uni){
         uni->addtol(tlesson);
     }
 }
+
+
+
 void readfile2(string file, Uni *uni){
+
+    ifstream in;
+    in.open(file);
+
+    string line = "";
+    getline(in,line);
+    while (getline(in,line)){
+        int StudentCode;
+        string StudentName;
+        string tmp;
+
+        stringstream inputString(line);
+
+        getline(inputString,tmp,',');
+        StudentCode = atoi(tmp.c_str());
+        getline(inputString,StudentName,',');
+
+        Student newstudent = Student(StudentName, StudentCode);
+        uni->addtos(newstudent);
+    }
 
 }
 

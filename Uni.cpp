@@ -12,11 +12,11 @@ void Uni::setStudents(const vector<Student> &students) {
     Uni::students = students;
 }
 
-const set<Class> &Uni::getClasses() const {
+const vector<Class> &Uni::getClasses() const {
     return classes;
 }
 
-void Uni::setClasses(const set<Class> &classes) {
+void Uni::setClasses(const vector<Class> &classes) {
     Uni::classes = classes;
 }
 void Uni::addtol(Lesson l){
@@ -25,9 +25,15 @@ void Uni::addtol(Lesson l){
 
 Uni::Uni() {
     lessons = vector<Lesson>();
-    classes = set<Class>();
+    classes = vector<Class>();
     students = vector<Student>();
 }
+
+
+void Uni::addtos(Student s){
+    Uni::students.push_back(s);
+}
+
 
 /*void Uni::addtoc(Class c) {
     //Uni::classes.insert(c);
