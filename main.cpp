@@ -11,7 +11,7 @@ using namespace std;
 int main() {
     Uni *uni = new Uni();
 
-    string myFilePath = "./schedule/classes.csv";
+    string myFilePath = "../schedule/classes.csv";
     ifstream in;
     in.open(myFilePath);
 
