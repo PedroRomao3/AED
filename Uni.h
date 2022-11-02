@@ -17,6 +17,7 @@ class Uni {
 
 public:
     Uni();
+
     const vector<Student> &getStudents() const;
 
     void setStudents(const vector<Student> &students);
@@ -31,8 +32,6 @@ public:
 
     void addtos(Student s);
 };
-
-
 
 
 #endif //PROJAED_UNI_H

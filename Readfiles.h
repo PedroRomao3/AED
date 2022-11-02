@@ -8,6 +8,7 @@
 #include <fstream>
 #include <sstream>
 #include "Lesson.h"
+#include "Uni.h"
 
 using namespace std;
 
@@ -65,28 +66,28 @@ void readfile1(string file, Uni *uni) {
 }
 
 
-    void readfile2(string file, Uni *uni) {
+void readfile2(string file, Uni *uni) {
 
-        ifstream in;
-        in.open(file);
+    ifstream in;
+    in.open(file);
 
-        string line = "";
-        getline(in, line);
-        while (getline(in, line)) {
-            int StudentCode;
-            string StudentName;
-            string tmp;
+    string line = "";
+    getline(in, line);
+    while (getline(in, line)) {
+        int StudentCode;
+        string StudentName;
+        string tmp;
 
-            stringstream inputString(line);
+        stringstream inputString(line);
 
-            getline(inputString, tmp, ',');
-            StudentCode = atoi(tmp.c_str());
-            getline(inputString, StudentName, ',');
+        getline(inputString, tmp, ',');
+        StudentCode = atoi(tmp.c_str());
+        getline(inputString, StudentName, ',');
 
-            Student newstudent = Student(StudentName, StudentCode);
-            uni->addtos(newstudent);
-        }
-
+        Student newstudent = Student(StudentName, StudentCode);
+        uni->addtos(newstudent);
     }
+
+}
 
 #endif //PROJAED_READFILES_H

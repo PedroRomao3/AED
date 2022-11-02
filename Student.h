@@ -3,6 +3,7 @@
 //
 #ifndef PROJAED_STUDENT_H
 #define PROJAED_STUDENT_H
+
 #include <string>
 #include "Lesson.h"
 
@@ -15,8 +16,12 @@ class Student {
 
 public:
     Student(string name, int code);
+
     Student(string name, int code, vector<Lesson> timetable);
-    Student operator = (Student s1);
+
+    Student operator=(Student s1);
+
     string getName();
 };
+
 #endif //PROJAED_STUDENT_H

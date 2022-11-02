@@ -16,12 +16,15 @@ Class::Class(string classCode, vector<Lesson> lessons) {
 const string &Class::getClassCode() const {
     return classCode;
 }
+
 void Class::setClassCode(const string classCode) {
     Class::classCode = classCode;
 }
+
 const vector<Lesson> Class::getLessons() const {
     return lessons;
 }
+
 void Class::setLessons(const vector<Lesson> lessons) {
     Class::lessons = lessons;
 }
@@ -32,10 +35,10 @@ Class Class::operator=(Class s1) {
     return *this;
 }
 
-bool Class::operator<(Class s1) const{
+bool Class::operator<(Class s1) const {
     return true;
 }
 
 bool Class::operator==(const Class s1) {
-    return s1.classCode==this->classCode;
+    return (s1.classCode == this->classCode);
 }

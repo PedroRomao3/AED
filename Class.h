@@ -33,7 +33,7 @@ public:
     bool operator<(Class s1) const;
 
     bool operator==(Class s1);
-    
+
 };
 
 #endif //PROJAED_CLASS_H

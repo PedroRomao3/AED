@@ -20,7 +20,8 @@ const set<Class> Uni::getClasses() const {
 void Uni::setClasses(const set<Class> &classes) {
     Uni::classes = classes;
 }
-void Uni::addtol(Lesson l){
+
+void Uni::addtol(Lesson l) {
     Uni::lessons.push_back(l);
 }
 
@@ -31,11 +32,9 @@ Uni::Uni() {
 }
 
 
-
-void Uni::addtos(Student s){
+void Uni::addtos(Student s) {
     Uni::students.push_back(s);
 }
-//o diabo
 
 void Uni::addtoc(Class c) {
     Uni::classes.insert(c);
