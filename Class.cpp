@@ -8,9 +8,9 @@ Class::Class(string classCode) {
     this->classCode = classCode;
 }
 
-Class::Class(string classCode, vector<Lesson> timetable) {
+Class::Class(string classCode, vector<Lesson> lessons) {
     this->classCode = classCode;
-    this->timetable = timetable;
+    this->lessons = lessons;
 }
 
 const string &Class::getClassCode() const {
@@ -19,21 +19,30 @@ const string &Class::getClassCode() const {
 void Class::setClassCode(const string &classCode) {
     Class::classCode = classCode;
 }
-const vector<Lesson> &Class::getTimetable() const {
-    return timetable;
+const vector<Lesson> Class::getLessons() const {
+    return lessons;
 }
-void Class::setTimetable(const vector<Lesson> &timetable) {
-    Class::timetable = timetable;
+void Class::setLessons(const vector<Lesson> lessons) {
+    Class::lessons = lessons;
 }
 
 Class Class::operator=(Class s1) {
     this->classCode = s1.classCode;
-    this->timetable = s1.timetable;
+    this->lessons = s1.lessons;
     return *this;
 }
-bool Class::operator<(Class s1){
-    string r1,r2;
-    r1=this->classCode.substr(4,2);
-    r2=s1.classCode.substr(4,2);
-    return (stoi(r1)< stoi(r2));
+
+bool Class::operator<(const Class &s1) const {
+    return true;
+    /*string r1,r2;
+    r1=s1.classCode.substr(4,2);
+    r2=Class::classCode.substr(4,2);
+    if () {
+        return (stoi(r1) > stoi(r2));
+    }*/
 }
+
+bool Class::operator==(const Class &s1) const {
+    return s1.classCode==this->classCode;
+}
+

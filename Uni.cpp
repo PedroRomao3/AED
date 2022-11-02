@@ -12,7 +12,7 @@ void Uni::setStudents(const vector<Student> &students) {
     Uni::students = students;
 }
 
-const set<Class> &Uni::getClasses() const {
+set<Class> Uni::getClasses() const {
     return classes;
 }
 
@@ -29,8 +29,16 @@ Uni::Uni() {
     students = vector<Student>();
 }
 
-/*void Uni::addtoc(Class c) {
-    //Uni::classes.insert(c);
-    set<Class> a;
-    a.insert(c);
-}*/
+void Uni::addtoc(Class c) {
+    Uni::classes.insert(c);
+    //set<Class> a;
+    //a.insert(c);
+}
+
+const vector<Lesson> &Uni::getLessons() const {
+    return lessons;
+}
+
+void Uni::setLessons(const vector<Lesson> &lessons) {
+    Uni::lessons = lessons;
+}

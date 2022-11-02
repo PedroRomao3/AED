@@ -19,13 +19,17 @@ public:
 
     void setStudents(const vector<Student> &students);
 
-    const set<Class> &getClasses() const;
+    set<Class> getClasses() const;
 
     void setClasses(const set<Class> &classes);
 
     void addtol(Lesson l);
 
-    //void addtoc(Class c);
+    void addtoc(Class c);
+
+    const vector<Lesson> &getLessons() const;
+
+    void setLessons(const vector<Lesson> &lessons);
 
 };
 

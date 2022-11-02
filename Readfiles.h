@@ -11,14 +11,14 @@
 
 using namespace std;
 
-void readfile1(string file, Uni *uni){
+void readfile1(string file, Uni *uni) {
 
     ifstream in;
     in.open(file);
 
     string line = "";
-    getline(in,line);
-    while (getline(in,line)){
+    getline(in, line);
+    while (getline(in, line)) {
         float duration;
         string type;
         string day;
@@ -26,27 +26,44 @@ void readfile1(string file, Uni *uni){
         string classCode;
         float start;
         string tmp;
+        vector<Lesson> lessons;
 
         stringstream inputString(line);
 
-        getline(inputString,classCode,',');
-        Class oclass = Class(classCode);
-        //uni->addtoc(oclass);
-
-        getline(inputString,ucCode,',');
-        getline(inputString, day,',');
-        getline(inputString,tmp,',');
+        getline(inputString, classCode, ',');
+        getline(inputString, ucCode, ',');
+        getline(inputString, day, ',');
+        getline(inputString, tmp, ',');
         start = atof(tmp.c_str());
-        getline(inputString,tmp,',');
+        getline(inputString, tmp, ',');
         duration = atof(tmp.c_str());
-        getline(inputString,type,',');
+        getline(inputString, type, ',');
 
-        Lesson tlesson = Lesson(ucCode,classCode,start,duration,type,day);
-        uni->addtol(tlesson);
+        Lesson lesson = Lesson(ucCode, classCode, start, duration, type, day);
+        uni->addtol(lesson);
+        lessons.push_back(lesson);
+        Class newClass = Class(classCode);
+        set<Class> lessonS = uni->getClasses();
+        auto iter1 = lessonS.find(newClass);
+        auto iter2 = lessonS.end();
+        if(iter1==iter2){
+            Class newClass1 = Class(classCode, lessons);
+            uni->addtoc(newClass1);
+        }
+        else{
+            Class helper = *uni->getClasses().find(newClass);
+            vector<Lesson> a = helper.getLessons();
+            a.push_back(lesson);
+            helper.setLessons(a);
+            Class newClass1 = Class(classCode, a);
+            uni->addtoc(newClass1);
+
+        }
+
     }
 }
-void readfile2(string file, Uni *uni){
 
-}
+//void readfile2(string file, Uni *uni) {
+//}
 
 #endif //PROJAED_READFILES_H
