@@ -23,7 +23,9 @@ public:
 
     void setClasses(const set<Class> &classes);
 
-    void addto(Lesson l);
+    void addtol(Lesson l);
+
+    //void addtoc(Class c);
 
 };
 

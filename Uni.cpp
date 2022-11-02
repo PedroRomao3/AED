@@ -19,7 +19,7 @@ const set<Class> &Uni::getClasses() const {
 void Uni::setClasses(const set<Class> &classes) {
     Uni::classes = classes;
 }
-void Uni::addto(Lesson l){
+void Uni::addtol(Lesson l){
     Uni::lessons.push_back(l);
 }
 
@@ -28,3 +28,9 @@ Uni::Uni() {
     classes = set<Class>();
     students = vector<Student>();
 }
+
+/*void Uni::addtoc(Class c) {
+    //Uni::classes.insert(c);
+    set<Class> a;
+    a.insert(c);
+}*/

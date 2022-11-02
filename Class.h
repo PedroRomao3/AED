@@ -29,6 +29,8 @@ public:
 
     Class operator=(Class s1);
 
+    bool operator<(Class s1);
+
 };
 
 #endif //PROJAED_CLASS_H
