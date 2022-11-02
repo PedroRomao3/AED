@@ -2,8 +2,8 @@
 // Created by pedro on 30/10/2022.
 //
 
-#ifndef UNTITLED1_LESSON_H
-#define UNTITLED1_LESSON_H
+#ifndef PROJAED_LESSON_H
+#define PROJAED_LESSON_H
 
 #include <vector>
 #include <string>
@@ -46,4 +46,4 @@ public:
 };
 
 
-#endif //UNTITLED1_LESSON_H
+#endif //PROJAED_LESSON_H

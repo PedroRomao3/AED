@@ -2,8 +2,8 @@
 // Created by pedro on 31/10/2022.
 //
 
-#ifndef UNTITLED1_CLASS_H
-#define UNTITLED1_CLASS_H
+#ifndef PROJAED_CLASS_H
+#define PROJAED_CLASS_H
 
 #include <string>
 #include "Lesson.h"
@@ -31,4 +31,4 @@ public:
 
 };
 
-#endif //UNTITLED1_CLASS_H
+#endif //PROJAED_CLASS_H
