@@ -14,7 +14,7 @@ int main() {
     readfile1(myFile1Path, uni);
 
 
-    readfile2(myFile2Path,uni);
+    //readfile2(myFile2Path,uni);
     vector<Student> estudantes;
     estudantes = uni->getStudents();
     for (Student c : estudantes){

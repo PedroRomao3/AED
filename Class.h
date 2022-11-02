@@ -12,25 +12,27 @@ using namespace std;
 
 class Class {
     string classCode;
-    vector<Lesson> timetable;
+    vector<Lesson> lessons;
 
 public:
     Class(string classCode);
 
-    Class(string classCode, vector<Lesson> timetable);
+    Class(string classCode, vector<Lesson> lessons);
 
     const string &getClassCode() const;
 
-    void setClassCode(const string &classCode);
+    void setClassCode(const string classCode);
 
-    const vector<Lesson> &getTimetable() const;
+    const vector<Lesson> getLessons() const;
 
-    void setTimetable(const vector<Lesson> &timetable);
+    void setLessons(const vector<Lesson> lessons);
 
     Class operator=(Class s1);
 
-    bool operator<(Class s1);
+    bool operator<(Class s1) const;
 
+    bool operator==(Class s1);
+    
 };
 
 #endif //PROJAED_CLASS_H

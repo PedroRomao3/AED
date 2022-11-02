@@ -11,7 +11,7 @@
 
 class Uni {
     vector<Student> students;
-    vector<Class> classes;
+    set<Class> classes;
     vector<Lesson> lessons;
 
 
@@ -21,13 +21,13 @@ public:
 
     void setStudents(const vector<Student> &students);
 
-    const vector<Class> &getClasses() const;
+    const set<Class> getClasses() const;
 
-    void setClasses(const vector<Class> &classes);
+    void setClasses(const set<Class> &classes);
 
     void addtol(Lesson l);
 
-    //void addtoc(Class c);
+    void addtoc(Class c);
 
     void addtos(Student s);
 };
