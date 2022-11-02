@@ -33,7 +33,7 @@ Uni::Uni() {
 void Uni::addtos(Student s){
     Uni::students.push_back(s);
 }
-
+//o diabo
 
 void Uni::addtoc(Class c) {
     Uni::classes.insert(c);
