@@ -16,7 +16,7 @@ Class::Class(string classCode, vector<Lesson> lessons) {
 const string &Class::getClassCode() const {
     return classCode;
 }
-void Class::setClassCode(const string &classCode) {
+void Class::setClassCode(const string classCode) {
     Class::classCode = classCode;
 }
 const vector<Lesson> Class::getLessons() const {
@@ -32,17 +32,10 @@ Class Class::operator=(Class s1) {
     return *this;
 }
 
-bool Class::operator<(const Class &s1) const {
+bool Class::operator<(Class s1) const{
     return true;
-    /*string r1,r2;
-    r1=s1.classCode.substr(4,2);
-    r2=Class::classCode.substr(4,2);
-    if () {
-        return (stoi(r1) > stoi(r2));
-    }*/
 }
 
-bool Class::operator==(const Class &s1) const {
+bool Class::operator==(const Class s1) {
     return s1.classCode==this->classCode;
 }
-

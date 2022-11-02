@@ -21,3 +21,7 @@ Student Student::operator=(Student s1) {
     this->timetable = s1.timetable;
     return *this;
 }
+
+string Student::getName(){
+    return this->name;
+}

@@ -18,6 +18,8 @@ void readfile1(string file, Uni *uni) {
 
     string line = "";
     getline(in, line);
+
+
     while (getline(in, line)) {
         float duration;
         string type;
@@ -46,11 +48,10 @@ void readfile1(string file, Uni *uni) {
         set<Class> lessonS = uni->getClasses();
         auto iter1 = lessonS.find(newClass);
         auto iter2 = lessonS.end();
-        if(iter1==iter2){
+        if (iter1 == iter2) {
             Class newClass1 = Class(classCode, lessons);
             uni->addtoc(newClass1);
-        }
-        else{
+        } else {
             Class helper = *uni->getClasses().find(newClass);
             vector<Lesson> a = helper.getLessons();
             a.push_back(lesson);
@@ -63,7 +64,29 @@ void readfile1(string file, Uni *uni) {
     }
 }
 
-//void readfile2(string file, Uni *uni) {
-//}
+
+    void readfile2(string file, Uni *uni) {
+
+        ifstream in;
+        in.open(file);
+
+        string line = "";
+        getline(in, line);
+        while (getline(in, line)) {
+            int StudentCode;
+            string StudentName;
+            string tmp;
+
+            stringstream inputString(line);
+
+            getline(inputString, tmp, ',');
+            StudentCode = atoi(tmp.c_str());
+            getline(inputString, StudentName, ',');
+
+            Student newstudent = Student(StudentName, StudentCode);
+            uni->addtos(newstudent);
+        }
+
+    }
 
 #endif //PROJAED_READFILES_H

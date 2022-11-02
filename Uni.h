@@ -13,13 +13,15 @@ class Uni {
     vector<Student> students;
     set<Class> classes;
     vector<Lesson> lessons;
+
+
 public:
     Uni();
     const vector<Student> &getStudents() const;
 
     void setStudents(const vector<Student> &students);
 
-    set<Class> getClasses() const;
+    const set<Class> getClasses() const;
 
     void setClasses(const set<Class> &classes);
 
@@ -27,11 +29,10 @@ public:
 
     void addtoc(Class c);
 
-    const vector<Lesson> &getLessons() const;
-
-    void setLessons(const vector<Lesson> &lessons);
-
+    void addtos(Student s);
 };
+
+
 
 
 #endif //PROJAED_UNI_H

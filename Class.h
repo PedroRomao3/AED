@@ -21,7 +21,7 @@ public:
 
     const string &getClassCode() const;
 
-    void setClassCode(const string &classCode);
+    void setClassCode(const string classCode);
 
     const vector<Lesson> getLessons() const;
 
@@ -29,10 +29,11 @@ public:
 
     Class operator=(Class s1);
 
-    bool operator<(const Class &s1) const;
 
-    bool operator==(const Class &s1) const;
+    bool operator<(Class s1) const;
 
+    bool operator==(Class s1);
+    
 };
 
 #endif //PROJAED_CLASS_H
