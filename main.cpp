@@ -16,10 +16,12 @@ int main() {
 
 
     readfile2(myFile2Path,uni);
+    /*
     set<Student> estudantes;
     estudantes = uni->getStudents();
     for (Student c: estudantes) {
         cout << c.getName() << endl;
     }
+    */
     return 0;
 }

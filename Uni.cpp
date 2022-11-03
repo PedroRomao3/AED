@@ -5,7 +5,7 @@
 #include "Uni.h"
 
 const set<Student> &Uni::getStudents() const {
-    return students;
+    return this->students;
 }
 
 void Uni::setStudents(const set<Student> &students) {
