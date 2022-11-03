@@ -150,6 +150,60 @@ void Uni::ucOcupation() {
         cout << element.getCode() << "    " << element.getName() << endl;
     }
     cout << "The UC " << id << " has " << counter << " students";
-
 }
 
+void Uni::yearStudent() {
+    cout << "Year: ";
+    char id;
+    int counter;
+    cin >> id;
+    string ano;
+    switch(id){
+        case '1':
+            ano = "first";
+            break;
+        case '2':
+            ano = "second";
+            break;
+        case '3':
+            ano = "third";
+            break;
+    }
+
+    set<Student> estudantesnoano;
+    for (Student s : this->students){
+        for(Lesson les : s.getLessons()){
+            if (les.getClasscode()[0] == id) {
+                estudantesnoano.insert(s);
+                counter++;
+                break;
+            }
+        }
+    }
+
+    for (Student element : estudantesnoano){
+        cout << element.getCode() << "    " << element.getName() << endl;
+    }
+    cout << "The " << ano << " year (" << id << ") has " << counter << " students";
+}
+
+
+void Uni::studentsMoreThenUc(int n) {
+    cout<<"The following students have more than " << n << " UCs:\n";
+    set<string> ucs;
+    set<Student> more;
+    for (Student s : this->students) {
+        ucs.clear();
+        for (Lesson l : s.getLessons()){
+            string st = l.getUcCode();
+            ucs.insert(st);
+        }
+        if(ucs.size()>n){
+            more.insert(s);
+            cout<<s.getCode()<< "    " <<s.getName()<< " has " << ucs.size() << " UCs\n";
+        }
+
+    }
+
+    cout<< "There are " << more.size() <<" students with more than "<<n<<"UCs";
+}

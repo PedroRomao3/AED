@@ -47,7 +47,11 @@ public:
 
     void classOcupationandStudentsbyStudentcode();
 
+    void studentsMoreThenUc(int n);
+
     void ucOcupation();
+
+    void yearStudent();
 };
 
 

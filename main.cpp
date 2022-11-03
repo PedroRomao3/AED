@@ -15,10 +15,15 @@ int main() {
     readfile1(myFile1Path, uni);
     readfile2(myFile2Path,uni);
 
+    //while (true){}
+    uni->studentsMoreThenUc(2);
 
-   //uni->timeTableStudent();
+
+
+    //uni->timeTableStudent();
     //uni->classOcupationandStudents();
     //uni->classOcupationandStudentsbyStudentcode();
-    uni->ucOcupation();
+    //uni->ucOcupation();
+    //uni->yearStudent();
     return 0;
 }
