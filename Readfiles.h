@@ -88,20 +88,46 @@ void readfile2(string file, Uni *uni) {
         getline(inputString, tmp, ',');
         StudentCode = atoi(tmp.c_str());
         getline(inputString, StudentName, ',');
-        Student newstudent = Student(StudentName, StudentCode);
-
         getline(inputString, ucCode, ',');
         getline(inputString, classCode, ',');
-        const Lesson newLesson = Lesson(ucCode,classCode);
-        auto it = uni->getLessons().begin();
-        while (it != uni->getLessons().end()){
-            //find lesson with same(class code e uc code) e adicionar a student  lessons
-            if(*it==newLesson){
-                newstudent.addLesson(*it);
+
+        Student newstudent = Student(StudentName, StudentCode);
+        set<Student> studentS = uni->getStudents();
+        auto iter1 = studentS.find(newstudent);
+        auto iter2 = studentS.end();
+        if (iter1 == iter2) {
+            const Lesson newLesson = Lesson(ucCode,classCode);
+            auto it = uni->getLessons().begin();
+            while (it != uni->getLessons().end()){
+                //find lesson with same(class code e uc code) e adicionar a student  lessons
+                if(*it==newLesson){
+                    newstudent.addLesson(*it);
+                }
+                it++;
             }
-            it++;
+            uni->addtos(newstudent);
         }
-        uni->addtos(newstudent);
+        else{
+            Student student1 = *iter1;
+            vector<Lesson> newlessons1= student1.getLessons();
+            const Lesson newLesson = Lesson(ucCode,classCode);
+            auto it = uni->getLessons().begin();
+            while (it != uni->getLessons().end()){
+                //find lesson with same(class code e uc code) e adicionar a student  lessons
+                if(*it==newLesson){
+                    newlessons1.push_back(*it);
+                }
+                it++;
+            }
+            Student student2 = Student(student1.getName(),student1.getCode(),newlessons1);
+            //remover student1
+            uni->removeStudent(student1);
+            uni->addtos(student2);
+
+
+        }
+
+
 
     }
 

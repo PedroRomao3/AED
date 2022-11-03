@@ -2,6 +2,7 @@
 // Created by pedro on 31/10/2022.
 //
 
+#include <iostream>
 #include "Uni.h"
 
 const set<Student> &Uni::getStudents() const {
@@ -53,5 +54,42 @@ const vector<Lesson> &Uni::getLessons() const {
 
 void Uni::setLessons(const vector<Lesson> &lessons) {
     Uni::lessons = lessons;
+}
+
+void Uni::removeStudent(Student s1) {
+    students.erase(s1);
+}
+
+void Uni::timeTableStudent() {
+    int teste;
+    cout << "Insert code: " << endl;
+    cin >> teste;
+    set<Student> estudantes = this->students;
+    for (Student c : estudantes){
+        if (c.getCode() == teste){
+            c.printTimetable();
+        }
+    }
+}
+
+void Uni::classOcupationandstudents(){
+    cout << "Class Id: ";
+    string id;
+    int counter;
+    cin >> id;
+    set<Student> estudantesnaturma;
+    for (Student s : students){
+        for (Lesson les : s.getLessons()){
+            if (les.getClasscode() == id){
+                estudantesnaturma.insert(s);
+                counter++;
+                break;
+            }
+        }
+    }
+    for (Student element : estudantesnaturma){
+        cout << element.getCode() << "    " << element.getName() << endl;
+    }
+    cout << "Class " << id << " has " << counter << " students";
 }
 

@@ -5,6 +5,8 @@
 #include "Lesson.h"
 
 #include <utility>
+#include <iostream>
+
 Lesson::Lesson(string ucCode,string classCode) {
     this->ucCode = std::move(ucCode);
     this->classCode = std::move(classCode);
@@ -67,6 +69,19 @@ bool Lesson::operator<(const Lesson &s1) const {
 
 bool Lesson::operator==(const Lesson &s1) const {
     return (s1.classCode == this->classCode && s1.ucCode == this->ucCode);
+}
+
+void Lesson::printLesson() {
+    cout << "Turma: " << this->classCode << "   ";
+    cout << "Cadeira: " << this->ucCode << "   ";
+    float fin = start + duration;
+    cout << "Dia: " << this->day << "   ";
+    cout << "Tipo: " << this->type << "   ";
+    cout << "Hora: " << this->start << " -> " << fin << endl;
+}
+
+string Lesson::getClasscode() const {
+    return this->classCode;
 }
 
 

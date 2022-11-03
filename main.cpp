@@ -13,15 +13,10 @@ int main() {
     string myFile1Path = "../schedule/classes.csv";
     string myFile2Path = "../schedule/students_classes.csv";
     readfile1(myFile1Path, uni);
-
-
     readfile2(myFile2Path,uni);
 
-    set<Student> estudantes;
-    estudantes = uni->getStudents();
-    for (Student c: estudantes) {
-        cout << c.getName() << endl;
-    }
 
+   //uni->timeTableStudent();
+    uni->classOcupationandstudents();
     return 0;
 }

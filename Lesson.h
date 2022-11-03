@@ -31,6 +31,8 @@ public:
 
     float getStart() const;
 
+    string getClasscode() const;
+
     void setStart(float start);
 
     float getDuration() const;
@@ -48,6 +50,8 @@ public:
     bool operator<(const Lesson& s1) const;
 
     bool operator==(const Lesson& s1) const;
+
+    void printLesson();
 };
 
 
