@@ -23,6 +23,8 @@ public:
 
     string getName();
 
+    void addLesson(Lesson l1);
+
     bool operator<(const Student& s1) const;
 
     bool operator==(const Student& s1);

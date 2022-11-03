@@ -14,15 +14,16 @@ using namespace std;
 
 class Lesson {
 private:
-    float duration;
+    float duration{};
     string type;
     string day;
     string ucCode;
     string classCode;
-    float start;
+    float start{};
 public:
     Lesson(string ucCode,string classCode, float start, float duration, string type,
            string day);
+    Lesson(string ucCode,string classCode);
 
     const string &getUcCode() const;
 
@@ -43,6 +44,10 @@ public:
     const string &getDay() const;
 
     void setDay(const string &day);
+
+    bool operator<(const Lesson& s1) const;
+
+    bool operator==(const Lesson& s1) const;
 };
 
 

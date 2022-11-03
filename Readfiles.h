@@ -7,6 +7,7 @@
 
 #include <fstream>
 #include <sstream>
+#include <algorithm>
 #include "Lesson.h"
 #include "Uni.h"
 
@@ -79,15 +80,29 @@ void readfile2(string file, Uni *uni) {
         int StudentCode;
         string StudentName;
         string tmp;
+        string ucCode;
+        string classCode;
 
         stringstream inputString(line);
 
         getline(inputString, tmp, ',');
         StudentCode = atoi(tmp.c_str());
         getline(inputString, StudentName, ',');
-
         Student newstudent = Student(StudentName, StudentCode);
+
+        getline(inputString, ucCode, ',');
+        getline(inputString, classCode, ',');
+        const Lesson newLesson = Lesson(ucCode,classCode);
+        auto it = uni->getLessons().begin();
+        while (it != uni->getLessons().end()){
+            //find lesson with same(class code e uc code) e adicionar a student  lessons
+            if(*it==newLesson){
+                newstudent.addLesson(*it);
+            }
+            it++;
+        }
         uni->addtos(newstudent);
+
     }
 
 }
