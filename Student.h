@@ -22,6 +22,10 @@ public:
     Student operator=(Student s1);
 
     string getName();
+
+    bool operator<(const Student& s1) const;
+
+    bool operator==(const Student& s1);
 };
 
 #endif //PROJAED_STUDENT_H

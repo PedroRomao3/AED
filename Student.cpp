@@ -25,3 +25,12 @@ Student Student::operator=(Student s1) {
 string Student::getName(){
     return this->name;
 }
+
+bool Student::operator<(const Student& s1) const {
+    return (s1.name>this->name);
+
+}
+
+bool Student::operator==(const Student& s1) {
+    return (s1.name==this->name);
+}

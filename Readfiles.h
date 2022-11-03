@@ -58,11 +58,13 @@ void readfile1(string file, Uni *uni) {
             a.push_back(lesson);
             helper.setLessons(a);
             Class newClass1 = Class(classCode, a);
+            uni->removeClass(newClass1);
             uni->addtoc(newClass1);
 
         }
 
     }
+
 }
 
 

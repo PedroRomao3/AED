@@ -10,7 +10,7 @@
 #include "Class.h"
 
 class Uni {
-    vector<Student> students;
+    set<Student> students;
     set<Class> classes;
     vector<Lesson> lessons;
 
@@ -18,13 +18,15 @@ class Uni {
 public:
     Uni();
 
-    const vector<Student> &getStudents() const;
+    const set<Student> &getStudents() const;
 
-    void setStudents(const vector<Student> &students);
+    void setStudents(const set<Student> &students);
 
     const set<Class> getClasses() const;
 
     void setClasses(const set<Class> &classes);
+
+    void removeClass(Class c);
 
     void addtol(Lesson l);
 

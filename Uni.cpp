@@ -4,11 +4,11 @@
 
 #include "Uni.h"
 
-const vector<Student> &Uni::getStudents() const {
+const set<Student> &Uni::getStudents() const {
     return students;
 }
 
-void Uni::setStudents(const vector<Student> &students) {
+void Uni::setStudents(const set<Student> &students) {
     Uni::students = students;
 }
 
@@ -28,14 +28,18 @@ void Uni::addtol(Lesson l) {
 Uni::Uni() {
     lessons = vector<Lesson>();
     classes = set<Class>();
-    students = vector<Student>();
+    students = set<Student>();
 }
 
 
 void Uni::addtos(Student s) {
-    Uni::students.push_back(s);
+    Uni::students.insert(s);
 }
 
 void Uni::addtoc(Class c) {
     Uni::classes.insert(c);
+}
+
+void Uni::removeClass(Class c) {
+    classes.erase(c);
 }

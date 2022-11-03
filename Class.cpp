@@ -36,9 +36,11 @@ Class Class::operator=(Class s1) {
 }
 
 bool Class::operator<(Class s1) const {
-    return true;
+    return (s1.classCode < this->classCode);
+
 }
 
 bool Class::operator==(const Class s1) {
     return (s1.classCode == this->classCode);
 }
+
