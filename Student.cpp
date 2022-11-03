@@ -26,6 +26,12 @@ string Student::getName(){
     return this->name;
 }
 
-int Student::getId(){
-    return this->code;
+
+bool Student::operator<(const Student& s1) const {
+    return (s1.name>this->name);
+
+}
+
+bool Student::operator==(const Student& s1) {
+    return (s1.name==this->name);
 }

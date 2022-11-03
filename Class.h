@@ -15,24 +15,24 @@ class Class {
     vector<Lesson> lessons;
 
 public:
-    Class(string classCode);
+    explicit Class(string classCode);
 
     Class(string classCode, vector<Lesson> lessons);
 
     const string &getClassCode() const;
 
-    void setClassCode(const string classCode);
+    void setClassCode(string classCode);
 
     const vector<Lesson> getLessons() const;
 
-    void setLessons(const vector<Lesson> lessons);
+    void setLessons(vector<Lesson> lessons);
 
     Class operator=(Class s1);
 
     bool operator<(Class s1) const;
 
     bool operator==(Class s1);
-    
+
 };
 
 #endif //PROJAED_CLASS_H

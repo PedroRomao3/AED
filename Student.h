@@ -3,6 +3,7 @@
 //
 #ifndef PROJAED_STUDENT_H
 #define PROJAED_STUDENT_H
+
 #include <string>
 #include "Lesson.h"
 
@@ -15,9 +16,17 @@ class Student {
 
 public:
     Student(string name, int code);
+
     Student(string name, int code, vector<Lesson> timetable);
-    Student operator = (Student s1);
+
+    Student operator=(Student s1);
+
     string getName();
-    int getId();
+
+    bool operator<(const Student& s1) const;
+
+    bool operator==(const Student& s1);
+
 };
+
 #endif //PROJAED_STUDENT_H

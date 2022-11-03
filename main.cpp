@@ -5,6 +5,7 @@
 #include <sstream>
 #include "Uni.h"
 #include "Readfiles.h"
+
 using namespace std;
 
 int main() {
@@ -15,10 +16,10 @@ int main() {
 
 
     readfile2(myFile2Path,uni);
-    vector<Student> estudantes;
+    set<Student> estudantes;
     estudantes = uni->getStudents();
-    for (Student c : estudantes){
-        cout << c.getName() << "    " << c.getId() << endl;
+    for (Student c: estudantes) {
+        cout << c.getName() << endl;
     }
     return 0;
 }
