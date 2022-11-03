@@ -51,3 +51,8 @@ const vector<Lesson> &Uni::getLessons() const {
 void Uni::setLessons(const vector<Lesson> &lessons) {
     Uni::lessons = lessons;
 }
+
+void Uni::removeStudent(Student s1) {
+    students.erase(s1);
+
+}

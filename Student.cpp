@@ -39,3 +39,11 @@ void Student::addLesson(Lesson l1) {
     this->timetable.push_back(l1);
 
 }
+
+vector<Lesson> Student::getLessons() {
+    return timetable;
+}
+
+int Student::getCode() const {
+    return this->code;
+}

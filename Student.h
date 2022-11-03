@@ -23,7 +23,11 @@ public:
 
     string getName();
 
+    int getCode() const;
+
     void addLesson(Lesson l1);
+
+    vector<Lesson> getLessons();
 
     bool operator<(const Student& s1) const;
 

@@ -28,6 +28,8 @@ public:
 
     void removeClass(Class c);
 
+    void removeStudent(Student s1);
+
     void addtol(Lesson l);
 
     const vector<Lesson> &getLessons() const;
