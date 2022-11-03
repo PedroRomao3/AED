@@ -30,6 +30,10 @@ public:
 
     void addtol(Lesson l);
 
+    const vector<Lesson> &getLessons() const;
+
+    void setLessons(const vector<Lesson> &lessons);
+
     void addtoc(Class c);
 
     void addtos(Student s);

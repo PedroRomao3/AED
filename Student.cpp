@@ -32,5 +32,10 @@ bool Student::operator<(const Student& s1) const {
 }
 
 bool Student::operator==(const Student& s1) {
-    return (s1.name==this->name);
+    return (s1.code==this->code);
+}
+
+void Student::addLesson(Lesson l1) {
+    this->timetable.push_back(l1);
+
 }

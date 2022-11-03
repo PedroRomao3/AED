@@ -43,3 +43,11 @@ void Uni::addtoc(Class c) {
 void Uni::removeClass(Class c) {
     classes.erase(c);
 }
+
+const vector<Lesson> &Uni::getLessons() const {
+    return lessons;
+}
+
+void Uni::setLessons(const vector<Lesson> &lessons) {
+    Uni::lessons = lessons;
+}
