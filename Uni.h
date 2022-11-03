@@ -15,6 +15,7 @@ class Uni {
     vector<Lesson> lessons;
 
 
+
 public:
     Uni();
     const vector<Student> &getStudents() const;
@@ -30,6 +31,8 @@ public:
     void addtoc(Class c);
 
     void addtos(Student s);
+
+    vector<Student> studentclassucyear();
 };
 
 

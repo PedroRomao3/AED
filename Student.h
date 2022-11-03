@@ -18,5 +18,6 @@ public:
     Student(string name, int code, vector<Lesson> timetable);
     Student operator = (Student s1);
     string getName();
+    int getId();
 };
 #endif //PROJAED_STUDENT_H

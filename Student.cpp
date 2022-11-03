@@ -25,3 +25,7 @@ Student Student::operator=(Student s1) {
 string Student::getName(){
     return this->name;
 }
+
+int Student::getId(){
+    return this->code;
+}
