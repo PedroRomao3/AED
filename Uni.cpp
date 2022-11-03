@@ -3,6 +3,8 @@
 //
 
 #include <iostream>
+#include <algorithm>
+#include <list>
 #include "Uni.h"
 
 const set<Student> &Uni::getStudents() const {
@@ -72,7 +74,7 @@ void Uni::timeTableStudent() {
     }
 }
 
-void Uni::classOcupationandstudents(){
+void Uni::classOcupationandStudents(){
     cout << "Class Id: ";
     string id;
     int counter;
@@ -91,5 +93,63 @@ void Uni::classOcupationandstudents(){
         cout << element.getCode() << "    " << element.getName() << endl;
     }
     cout << "Class " << id << " has " << counter << " students";
+}
+
+bool comPSC(Student s1, Student s2){
+    return s1.getCode() < s2.getCode();
+
+}
+void Uni::classOcupationandStudentsbyStudentcode() {
+    cout << "Class Id: ";
+    string id;
+    int counter;
+    cin >> id;
+    set<Student> estudantesnaturma;
+    for (Student s : students){
+        for (Lesson les : s.getLessons()){
+            if (les.getClasscode() == id){
+                estudantesnaturma.insert(s);
+                counter++;
+                break;
+            }
+        }
+    }
+
+    list<Student> listaestudantes;
+
+    for (Student s : estudantesnaturma){
+        listaestudantes.push_back(s);
+    }
+
+    listaestudantes.sort(comPSC);
+
+    for (Student element : listaestudantes){
+        cout << element.getCode() << "    " << element.getName() << endl;
+    }
+    cout << "Class " << id << " has " << counter << " students";
+}
+
+
+void Uni::ucOcupation() {
+    cout << "UCcode: ";
+    string id;
+    int counter;
+    cin >> id;
+    set<Student> estudantesnauc;
+    for (Student s : this->students){
+        for(Lesson les : s.getLessons()){
+            if (les.getUcCode() == id) {
+                estudantesnauc.insert(s);
+                counter++;
+                break;
+            }
+        }
+    }
+
+    for (Student element : estudantesnauc){
+        cout << element.getCode() << "    " << element.getName() << endl;
+    }
+    cout << "The UC " << id << " has " << counter << " students";
+
 }
 

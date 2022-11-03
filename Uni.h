@@ -43,7 +43,11 @@ public:
 
     void timeTableStudent();
 
-    void classOcupationandstudents();
+    void classOcupationandStudents();
+
+    void classOcupationandStudentsbyStudentcode();
+
+    void ucOcupation();
 };
 
 

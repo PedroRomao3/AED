@@ -17,6 +17,8 @@ int main() {
 
 
    //uni->timeTableStudent();
-    uni->classOcupationandstudents();
+    //uni->classOcupationandStudents();
+    //uni->classOcupationandStudentsbyStudentcode();
+    uni->ucOcupation();
     return 0;
 }
