@@ -6,6 +6,8 @@
 #include <algorithm>
 #include <list>
 #include "Uni.h"
+extern int CAP;
+
 
 const set<Student> &Uni::getStudents() const {
     return this->students;
@@ -261,6 +263,9 @@ void Uni::removeStudentClass(Student s, UCclass uc){
     set<Student> setSt = uc.getStudents();
     setSt.erase(s);
     uc.setStudents(setSt);
+    UCclass cclass = uc;
+    this->uClasses.erase(uc);
+    this->uClasses.insert(cclass);
     vector<Lesson> timet = s.getLessons();
     auto it = timet.begin();
     while (it != timet.end()){
@@ -271,6 +276,29 @@ void Uni::removeStudentClass(Student s, UCclass uc){
         it++;
     }
     s.setLessons(timet);
+    Student hji = s;
+    this->students.erase(s);
+    this->students.insert(hji);
+}
+void Uni::addStudentClass(Student s, UCclass uc) {
+    set<Student> setSt = uc.getStudents();
+    setSt.insert(s);
+    uc.setStudents(setSt);
+    UCclass cclass = uc;
+    this->uClasses.erase(uc);
+    this->uClasses.insert(cclass);
+    vector<Lesson> timet = s.getLessons();
+    auto it = cclass.getLessons().begin();
+    while (it != cclass.getLessons().end()){
+        Lesson lesson = *it;
+        timet.push_back(lesson);
+
+        it++;
+    }
+    s.setLessons(timet);
+    Student hji = s;
+    this->students.erase(s);
+    this->students.insert(hji);
 }
 
 const set<UCclass> &Uni::getUClasses() const {
@@ -414,10 +442,50 @@ void Uni::requestmaker() {
     }
 }
 
+bool Uni::isCompatible(vector<Lesson> timetable, vector<Lesson> classLessons ){
+    vector<Lesson> timetableTP;
+    vector<Lesson> classTPLesson;
+    for (Lesson les : timetable){
+        if (les.getType() == "TP" || les.getType() == "PL"){
+            timetableTP.push_back(les);
+        }
+    }
+
+    for (Lesson le : classLessons){
+        if (le.getType() == "TP" || le.getType() == "PL"){
+            classTPLesson.push_back(le);
+        }
+    }
+
+    for(Lesson l : timetableTP){
+        for(Lesson l1 :  classTPLesson){
+            if (l.getDay() == l1.getDay() &&((l.getStart()<l1.getStart() && l1.getStart()-l.getStart()<l.getDuration()) || (l1.getStart()<l.getStart() && l.getStart()-l1.getStart()<l1.getDuration()) )){
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+
 void Uni::requestHandler() {
+    Request a = this->requests.front();
 
-
-    this->requests.front();
-
+    if (a.getRequest() == 1){
+        for (Student s : a.getClassinvolved()[0].getStudents()){
+            if (s == a.getStudent()) {
+                Uni::removeStudentClass(a.getStudent(),a.getClassinvolved()[0]);
+                return;
+            }
+        }
+        cout << "Student is not in that class";
+        this->invalidrequest.push_back(a);
+    }
+    else if (a.getRequest() == 2){
+        if (a.getClassinvolved()[0].getStudents().size() <= 30 && isCompatible(a.getStudent().getLessons(),a.getClassinvolved()[0].getLessons() )){
+            addStudentClass(a.getStudent(), a.getClassinvolved()[0]);
+        }
+        else{this->invalidrequest.push_back(a);cout << "cannot add student to that class";}
+    }
 
 }

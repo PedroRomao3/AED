@@ -29,7 +29,7 @@ public:
 
     void addLesson(Lesson l1);
 
-    vector<Lesson> getLessons();
+    vector<Lesson> getLessons() const;
 
     void setLessons(vector<Lesson> x) ;
 

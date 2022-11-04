@@ -42,7 +42,7 @@ void Student::addLesson(Lesson l1) {
 
 }
 
-vector<Lesson> Student::getLessons() {
+vector<Lesson> Student::getLessons() const {
     return timetable;
 }
 

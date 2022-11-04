@@ -7,7 +7,7 @@
 #include "Readfiles.h"
 
 using namespace std;
-
+int CAP = 30;
 int main() {
     Uni *uni = new Uni();
     string myFile1Path = "../schedule/classes.csv";

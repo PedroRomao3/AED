@@ -18,6 +18,7 @@ class Uni {
     vector<Lesson> lessons;
     set<UCclass> uClasses;
     queue<Request> requests;
+    stack<Request> invalidrequest;
 
 
 public:
@@ -37,6 +38,10 @@ public:
     void removeStudent(Student s1);
 
     void removeStudentClass(Student s, UCclass uc);
+
+    void addStudentClass(Student s, UCclass uc);
+
+    bool isCompatible(vector<Lesson> timetable, vector<Lesson> classLessons );
 
     void addtol(Lesson l);
 

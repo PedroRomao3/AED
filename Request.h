@@ -19,13 +19,17 @@ class Request {
 public:
     Request(int request,Student student, const vector<UCclass> &classinvolved);
 
-    int getRequest() const;
+    int getRequest() ;
 
     void setRequest(int request);
 
     const vector<UCclass> &getClassinvolved() const;
 
     void setClassinvolved(const vector<UCclass> &classinvolved);
+
+    const Student &getStudent() const;
+
+    void setStudent(const Student &student);
 
 
 };
