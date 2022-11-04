@@ -6,15 +6,18 @@
 #define PROJAED_UNI_H
 
 
+#include <queue>
 #include "Student.h"
 #include "Class.h"
 #include "UCclass.h"
+#include "Request.h"
 
 class Uni {
     set<Student> students;
     set<Class> classes;
     vector<Lesson> lessons;
     set<UCclass> uClasses;
+    queue<Request> requests;
 
 
 public:
@@ -32,6 +35,8 @@ public:
     void removeClass(Class c);
 
     void removeStudent(Student s1);
+
+    void removeStudentClass(Student s, UCclass uc);
 
     void addtol(Lesson l);
 
@@ -51,13 +56,25 @@ public:
 
     void classOcupationandStudentsbyStudentcode();
 
-    void studentsMoreThenUc(int n);
+    void studentsMoreThenUc();
 
     void ucOcupation();
 
     void yearStudent();
 
     void fillUCclasses();
+
+    const set<UCclass> &getUClasses() const;
+
+    void setUClasses(const set<UCclass> &uClasses);
+
+    const queue<Request> &getRequests() const;
+
+    void setRequests(const queue<Request> &requests);
+
+    void requestmaker();
+
+    void requestHandler();
 };
 
 

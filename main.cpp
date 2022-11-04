@@ -16,10 +16,11 @@ int main() {
     readfile1(myFile1Path, uni);
     readfile2(myFile2Path,uni);
     readfile3(myFile3Path, uni);
+    //requestmake();
+    //requestHandle(queue requests);
 
     //while (true){}
     //uni->studentsMoreThenUc(2);
-
 
 
     //uni->timeTableStudent();

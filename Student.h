@@ -15,6 +15,8 @@ class Student {
     vector<Lesson> timetable;
 
 public:
+    Student(int code);
+
     Student(string name, int code);
 
     Student(string name, int code, vector<Lesson> timetable);
@@ -28,6 +30,8 @@ public:
     void addLesson(Lesson l1);
 
     vector<Lesson> getLessons();
+
+    void setLessons(vector<Lesson> x) ;
 
     bool operator<(const Student& s1) const;
 

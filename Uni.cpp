@@ -193,7 +193,10 @@ void Uni::yearStudent() {
 }
 
 
-void Uni::studentsMoreThenUc(int n) {
+void Uni::studentsMoreThenUc() {
+    int n;
+    cout << "Mininum uc: ";
+    cin >> n;
     cout<<"The following students have more than " << n << " UCs:\n";
     set<string> ucs;
     set<Student> more;
@@ -254,4 +257,167 @@ void Uni::fillUCclasses() {
     }
 }
 
+void Uni::removeStudentClass(Student s, UCclass uc){
+    set<Student> setSt = uc.getStudents();
+    setSt.erase(s);
+    uc.setStudents(setSt);
+    vector<Lesson> timet = s.getLessons();
+    auto it = timet.begin();
+    while (it != timet.end()){
+        Lesson lesson = *it;
+        if (lesson.getClasscode()==uc.getClassCode() && lesson.getUcCode() == uc.getUcCode()){
+            timet.erase(it);
+        }
+        it++;
+    }
+    s.setLessons(timet);
+}
 
+const set<UCclass> &Uni::getUClasses() const {
+    return uClasses;
+}
+
+void Uni::setUClasses(const set<UCclass> &uClasses) {
+    Uni::uClasses = uClasses;
+}
+
+const queue<Request> &Uni::getRequests() const {
+    return requests;
+}
+
+void Uni::setRequests(const queue<Request> &requests) {
+    Uni::requests = requests;
+}
+void Uni::requestmaker() {
+    cout<<"enter request code\n";
+    int request;
+    cin>>request;
+    if (request == 1) {
+
+
+        cout << "insert student code\n";
+        int studentcode;
+        cin >> studentcode;
+        cout << "insert class code\n";
+        string classcode;
+        cin >> classcode;
+        cout << "insert uc code\n";
+        string uccode;
+        cin >> uccode;
+        UCclass a = UCclass(uccode, classcode);
+        auto it = this->getUClasses().find(a);
+        UCclass b = *it;
+        vector<UCclass> classes;
+        classes.push_back(b);
+        Student s = Student(studentcode);
+        auto ite = this->getStudents().find(s);
+        Student c = *ite;
+        Request request1 = Request(1, c, classes);
+        this->requests.push(request1);
+    }
+
+    else if (request == 2){
+            cout<<"insert student code\n";
+            int studentcode;
+            cin>>studentcode;
+            cout<<"insert class code\n";
+            string classcode;
+            cin>>classcode;
+            cout<<"insert uc code\n";
+            string uccode;
+            cin>>uccode;
+            UCclass a = UCclass(uccode,classcode);
+            auto it = this->getUClasses().find(a);
+            UCclass b = *it;
+            vector<UCclass> classes;
+            classes.push_back(b);
+            Student s = Student(studentcode);
+            auto ite = this->getStudents().find(s);
+            Student c = *ite;
+            Request request1 = Request(2,c,classes);
+            this->requests.push(request1);
+
+    }
+
+    else if (request == 3){
+        cout<<"insert student code\n";
+        int studentcode;
+        cin>>studentcode;
+
+        cout<<"insert first class code\n";
+        string classcode;
+        cin>>classcode;
+        cout<<"insert first uc code\n";
+        string uccode;
+        cin>>uccode;
+
+        cout<<"insert 2nd class code\n";
+        string classcode2;
+        cin>>classcode2;
+        cout<<"insert 2nd uc code\n";
+        string uccode2;
+        cin>>uccode2;
+
+        UCclass a = UCclass(uccode,classcode);
+        UCclass j = UCclass(uccode2,classcode2);
+        auto it = this->getUClasses().find(a);
+        auto it1 = this->getUClasses().find(j);
+        UCclass k = *it1;
+        UCclass b = *it;
+        vector<UCclass> classes1;
+        classes1.push_back(b);
+        classes1.push_back(k);
+        Student s = Student(studentcode);
+        auto ite = this->getStudents().find(s);
+        Student c = *ite;
+        Request request1 = Request(3,c,classes1);
+        this->requests.push(request1);
+    }
+
+    else if (request == 4) {
+        cout << "insert student code\n";
+        int studentcode;
+        cin >> studentcode;
+        Student s = Student(studentcode);
+        auto ite = this->getStudents().find(s);
+        Student c = *ite;
+        while (true) {
+            cout << "insert first class code if done inserting insert q\n";
+            string classcode;
+            cin >> classcode;
+            if (classcode == "q") break;
+            cout << "insert first uc code\n";
+            string uccode;
+            cin >> uccode;
+
+            cout << "insert 2nd class code\n";
+            string classcode2;
+            cin >> classcode2;
+            cout << "insert 2nd uc code\n";
+            string uccode2;
+            cin >> uccode2;
+
+            UCclass a = UCclass(uccode, classcode);
+            UCclass j = UCclass(uccode2, classcode2);
+            auto it = this->getUClasses().find(a);
+            auto it1 = this->getUClasses().find(j);
+            UCclass k = *it1;
+            UCclass b = *it;
+            vector<UCclass> classes1;
+            classes1.push_back(b);
+            classes1.push_back(k);
+
+            Request request1 = Request(4, c, classes1);
+            this->requests.push(request1);
+
+        }
+    }
+}
+
+void Uni::requestHandler() {
+
+
+    this->requests.front();
+
+
+}

@@ -8,6 +8,7 @@ Student::Student(string name, int code) {
     this->name = name;
     this->code = code;
 }
+Student::Student(int code) {this->code=code;}
 
 Student::Student(string name, int code, vector<Lesson> timetable) {
     this->name = name;
@@ -47,6 +48,10 @@ vector<Lesson> Student::getLessons() {
 
 int Student::getCode() const {
     return this->code;
+}
+
+void Student::setLessons(vector<Lesson> x) {
+    this->timetable = x;
 }
 
 void Student::printTimetable() {
