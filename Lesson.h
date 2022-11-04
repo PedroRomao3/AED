@@ -52,6 +52,8 @@ public:
     bool operator==(const Lesson& s1) const;
 
     void printLesson();
+
+    bool equals(Lesson l);
 };
 
 

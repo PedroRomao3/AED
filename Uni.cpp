@@ -45,6 +45,11 @@ void Uni::addtoc(Class c) {
 }
 
 
+void Uni::addtou(UCclass uc) {
+    Uni::uClasses.insert(uc);
+}
+
+
 void Uni::removeClass(Class c) {
     classes.erase(c);
 }
@@ -205,5 +210,36 @@ void Uni::studentsMoreThenUc(int n) {
 
     }
 
-    cout<< "There are " << more.size() <<" students with more than "<<n<<"UCs";
+    cout<< "There are " << more.size() <<" students with more than "<<n<<" UCs";
 }
+
+void Uni::fillUCclasses() {
+    for(Student s : this->students){
+        for(Lesson l : s.getLessons()){
+            string h1;
+            string h2;
+            h1=l.getUcCode();
+            h2=l.getClasscode();
+            UCclass turmauc = UCclass(h1,h2);
+            auto it1 = this->uClasses.find(turmauc);
+            if(it1!=this->uClasses.end()){
+                UCclass helper = *it1;
+                vector<Lesson> helper2 = helper.getLessons();
+                for(Lesson l1:helper2){
+                    if(l1.equals(l)){
+                        goto label;
+                    }
+                }
+                helper2.push_back(l);
+                helper.setLessons(helper2);
+                this->uClasses.erase(*it1);
+                this->uClasses.insert(helper);
+                label:
+                continue;
+            }
+
+        }
+    }
+}
+
+

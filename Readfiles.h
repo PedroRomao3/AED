@@ -125,6 +125,7 @@ void readfile2(string file, Uni *uni) {
             uni->addtos(student2);
 
 
+
         }
 
 
@@ -132,5 +133,36 @@ void readfile2(string file, Uni *uni) {
     }
 
 }
+
+
+void readfile3(string file, Uni *uni) {
+
+    ifstream in;
+    in.open(file);
+
+    string line = "";
+    getline(in, line);
+    while (getline(in, line)) {
+        string ucCode;
+        string classCode;
+
+        stringstream inputString(line);
+
+        getline(inputString, ucCode, ',');
+        getline(inputString, classCode, ',');
+
+        UCclass newUCclass = UCclass(ucCode, classCode);
+        uni->addtou(newUCclass);
+
+
+    }
+    uni->fillUCclasses();
+
+
+
+
+}
+
+
 
 #endif //PROJAED_READFILES_H

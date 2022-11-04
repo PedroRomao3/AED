@@ -8,15 +8,17 @@
 
 #include "Student.h"
 #include "Class.h"
+#include "UCclass.h"
 
 class Uni {
     set<Student> students;
     set<Class> classes;
     vector<Lesson> lessons;
-
+    set<UCclass> uClasses;
 
 
 public:
+
     Uni();
 
     const set<Student> &getStudents() const;
@@ -41,6 +43,8 @@ public:
 
     void addtos(Student s);
 
+    void addtou(UCclass uc);
+
     void timeTableStudent();
 
     void classOcupationandStudents();
@@ -52,6 +56,8 @@ public:
     void ucOcupation();
 
     void yearStudent();
+
+    void fillUCclasses();
 };
 
 

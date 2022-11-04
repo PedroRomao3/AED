@@ -84,4 +84,9 @@ string Lesson::getClasscode() const {
     return this->classCode;
 }
 
+bool Lesson::equals(Lesson l) {
+    if(this->ucCode==l.ucCode && this->classCode==l.classCode && this->start==l.start && this->day==l.day && this->duration == l.duration && this->type == l.type){return true;};
+    return false;
+}
+
 
