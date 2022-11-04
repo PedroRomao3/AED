@@ -214,27 +214,39 @@ void Uni::studentsMoreThenUc(int n) {
 }
 
 void Uni::fillUCclasses() {
+
     for(Student s : this->students){
+
         for(Lesson l : s.getLessons()){
-            string h1;
-            string h2;
-            h1=l.getUcCode();
-            h2=l.getClasscode();
-            UCclass turmauc = UCclass(h1,h2);
+            string ucCode;
+            string classCode;
+            set<Student> studentshelper;
+            ucCode=l.getUcCode();
+            classCode=l.getClasscode();
+            UCclass turmauc = UCclass(ucCode, classCode);
             auto it1 = this->uClasses.find(turmauc);
             if(it1!=this->uClasses.end()){
-                UCclass helper = *it1;
-                vector<Lesson> helper2 = helper.getLessons();
-                for(Lesson l1:helper2){
+                UCclass turmauc1 = *it1;
+                studentshelper = turmauc1.getStudents();
+                studentshelper.insert(s);
+                turmauc1.setStudents(studentshelper);
+                vector<Lesson> lesSons;
+                UCclass helperclass= UCclass("","");
+                this->uClasses.erase(*it1);
+                this->uClasses.insert(turmauc1);
+                for(Lesson l1:lesSons){
                     if(l1.equals(l)){
                         goto label;
                     }
                 }
-                helper2.push_back(l);
-                helper.setLessons(helper2);
-                this->uClasses.erase(*it1);
-                this->uClasses.insert(helper);
+                lesSons = turmauc1.getLessons();
+                lesSons.push_back(l);
+                turmauc1.setLessons(lesSons);
+                helperclass = turmauc1;
+                this->uClasses.erase(turmauc1);
+                this->uClasses.insert(helperclass);
                 label:
+
                 continue;
             }
 

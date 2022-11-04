@@ -8,6 +8,7 @@
 #include <string>
 #include <vector>
 #include "Lesson.h"
+#include "Student.h"
 
 using namespace std;
 
@@ -16,7 +17,7 @@ using namespace std;
 class UCclass {
     string ucCode;
     string classCode;
-    int NumStudents;
+    set<Student> students;
     vector<Lesson> lessons;
 public:
     UCclass(const string &ucCode, const string &classCode, int numStudents, const vector<Lesson> &lessons);
@@ -33,9 +34,9 @@ public:
 
     void setClassCode(const string &classCode);
 
-    int getNumStudents() const;
+    const set<Student> &getStudents() const;
 
-    void setNumStudents(int numStudents);
+    void setStudents(const set<Student> &students);
 
     UCclass operator=(UCclass uc1);
 
