@@ -271,14 +271,15 @@ void Uni::removeStudentClass(Student s, UCclass uc){
     while (it != timet.end()){
         Lesson lesson = *it;
         if (lesson.getClasscode()==uc.getClassCode() && lesson.getUcCode() == uc.getUcCode()){
-            timet.erase(it);
+            it = timet.erase(it);
         }
-        it++;
+        else{it++;}
     }
     s.setLessons(timet);
     Student hji = s;
     this->students.erase(s);
     this->students.insert(hji);
+    this->requests.front().setStudent(hji);
 }
 void Uni::addStudentClass(Student s, UCclass uc) {
     set<Student> setSt = uc.getStudents();
@@ -316,53 +317,62 @@ const queue<Request> &Uni::getRequests() const {
 void Uni::setRequests(const queue<Request> &requests) {
     Uni::requests = requests;
 }
-void Uni::requestmaker() {
+void Uni::requestmaker(int request,int studentcode,string classcode, string uccode ) {
     cout<<"enter request code\n";
-    int request;
-    cin>>request;
+    //int request;
+    //cin>>request;
     if (request == 1) {
 
 
         cout << "insert student code\n";
-        int studentcode;
-        cin >> studentcode;
+        //int studentcode;
+        //cin >> studentcode;
         cout << "insert class code\n";
-        string classcode;
-        cin >> classcode;
+        //string classcode;
+        //cin >> classcode;
         cout << "insert uc code\n";
-        string uccode;
-        cin >> uccode;
+        //string uccode;
+        //cin >> uccode;
         UCclass a = UCclass(uccode, classcode);
         auto it = this->getUClasses().find(a);
         UCclass b = *it;
         vector<UCclass> classes;
         classes.push_back(b);
         Student s = Student(studentcode);
-        auto ite = this->getStudents().find(s);
-        Student c = *ite;
-        Request request1 = Request(1, c, classes);
+        for (Student s1:this->getStudents()){
+            if (s1.getCode()== s.getCode()){
+                s = s1;
+                break;
+            }
+        }
+
+        Request request1 = Request(1, s, classes);
         this->requests.push(request1);
     }
 
     else if (request == 2){
             cout<<"insert student code\n";
-            int studentcode;
-            cin>>studentcode;
+            //int studentcode;
+           // cin>>studentcode;
             cout<<"insert class code\n";
-            string classcode;
-            cin>>classcode;
+            //string classcode;
+            //cin>>classcode;
             cout<<"insert uc code\n";
-            string uccode;
-            cin>>uccode;
+            //string uccode;
+            //cin>>uccode;
             UCclass a = UCclass(uccode,classcode);
             auto it = this->getUClasses().find(a);
             UCclass b = *it;
             vector<UCclass> classes;
             classes.push_back(b);
             Student s = Student(studentcode);
-            auto ite = this->getStudents().find(s);
-            Student c = *ite;
-            Request request1 = Request(2,c,classes);
+            for (Student s1:this->getStudents()){
+            if (s1.getCode()== s.getCode()){
+                s = s1;
+                break;
+            }
+            }
+            Request request1 = Request(2,s,classes);
             this->requests.push(request1);
 
     }
@@ -373,11 +383,11 @@ void Uni::requestmaker() {
         cin>>studentcode;
 
         cout<<"insert first class code\n";
-        string classcode;
-        cin>>classcode;
+        //string classcode;
+        //cin>>classcode;
         cout<<"insert first uc code\n";
-        string uccode;
-        cin>>uccode;
+        //string uccode;
+        //cin>>uccode;
 
         cout<<"insert 2nd class code\n";
         string classcode2;
@@ -396,9 +406,13 @@ void Uni::requestmaker() {
         classes1.push_back(b);
         classes1.push_back(k);
         Student s = Student(studentcode);
-        auto ite = this->getStudents().find(s);
-        Student c = *ite;
-        Request request1 = Request(3,c,classes1);
+        for (Student s1:this->getStudents()){
+            if (s1.getCode()== s.getCode()){
+                s = s1;
+                break;
+            }
+        }
+        Request request1 = Request(3,s,classes1);
         this->requests.push(request1);
     }
 
@@ -407,8 +421,12 @@ void Uni::requestmaker() {
         int studentcode;
         cin >> studentcode;
         Student s = Student(studentcode);
-        auto ite = this->getStudents().find(s);
-        Student c = *ite;
+        for (Student s1:this->getStudents()){
+            if (s1.getCode()== s.getCode()){
+                s = s1;
+                break;
+            }
+        }
         while (true) {
             cout << "insert first class code if done inserting insert q\n";
             string classcode;
@@ -435,7 +453,7 @@ void Uni::requestmaker() {
             classes1.push_back(b);
             classes1.push_back(k);
 
-            Request request1 = Request(4, c, classes1);
+            Request request1 = Request(4, s, classes1);
             this->requests.push(request1);
 
         }
@@ -447,13 +465,30 @@ bool Uni::isCompatible(vector<Lesson> timetable, vector<Lesson> classLessons ){
     vector<Lesson> classTPLesson;
     for (Lesson les : timetable){
         if (les.getType() == "TP" || les.getType() == "PL"){
+            bool unique = true;
+            for (Lesson l :timetableTP){
+                if (l.equals(les)){
+                    unique = false;
+                }
+            }
+            if(unique){
             timetableTP.push_back(les);
+            }
         }
     }
 
     for (Lesson le : classLessons){
         if (le.getType() == "TP" || le.getType() == "PL"){
-            classTPLesson.push_back(le);
+            bool unique = true;
+            for (Lesson l :classTPLesson){
+                if (l.equals(le)){
+                    unique = false;
+                }
+            }
+            if(unique){
+                classTPLesson.push_back(le);
+            }
+
         }
     }
 
@@ -469,23 +504,85 @@ bool Uni::isCompatible(vector<Lesson> timetable, vector<Lesson> classLessons ){
 
 
 void Uni::requestHandler() {
-    Request a = this->requests.front();
+    while(!this->requests.empty()) {
+        Request a = this->requests.front();
 
-    if (a.getRequest() == 1){
-        for (Student s : a.getClassinvolved()[0].getStudents()){
-            if (s == a.getStudent()) {
-                Uni::removeStudentClass(a.getStudent(),a.getClassinvolved()[0]);
-                return;
+        if (a.getRequest() == 1) {
+            for (Student s: a.getClassinvolved()[0].getStudents()) {
+                if (s == a.getStudent()) {
+                    Uni::removeStudentClass(a.getStudent(), a.getClassinvolved()[0]);
+                    this->requests.pop();
+                    continue;
+                }
+            }
+            cout << "Student is not in that class";
+            this->invalidrequest.push(a);
+        } else if (a.getRequest() == 2) {
+            if (a.getClassinvolved()[0].getStudents().size() <= CAP && isCompatible(a.getStudent().getLessons(), a.getClassinvolved()[0].getLessons()) && balanced(a.getClassinvolved()[0], a.getStudent())) {
+                addStudentClass(a.getStudent(), a.getClassinvolved()[0]);
+            } else {
+                this->invalidrequest.push(a);
+                this->requests.pop();
+                cout << "cannot add student to that class";
+            }
+        }else if (a.getRequest() == 3) {
+            UCclass original=a.getClassinvolved()[0];
+            for (UCclass uc2 : this->uClasses){
+                auto it = uc2.getStudents().find(a.getStudent());
+                if (it!= uc2.getStudents().end() && uc2.getUcCode() == a.getClassinvolved()[0].getUcCode()){
+                    original = uc2;
+                }
+            }
+            removeStudentClass(a.getStudent(),original);
+            if (a.getClassinvolved()[0].getStudents().size() < CAP &&
+                isCompatible(a.getStudent().getLessons(), a.getClassinvolved()[0].getLessons()) && balanced(a.getClassinvolved()[0], a.getStudent()))
+            {
+                addStudentClass(a.getStudent(), a.getClassinvolved()[0]);
+            }
+            else{
+                addStudentClass(a.getStudent(), original);
+                this->invalidrequest.push(a);
+            }
+            this->requests.pop();
+
+
+        }else if (a.getRequest() == 4){
+            for(int i=0;i<a.getClassinvolved().size();i++){
+                UCclass original=a.getClassinvolved()[i];
+                for (UCclass uc2 : this->uClasses){
+                    auto it = uc2.getStudents().find(a.getStudent());
+                    if (it!= uc2.getStudents().end() && uc2.getUcCode() == a.getClassinvolved()[i].getUcCode()){
+                        original = uc2;
+                    }
+                }
+                removeStudentClass(a.getStudent(),original);
+                if (a.getClassinvolved()[0].getStudents().size() < CAP &&
+                    isCompatible(a.getStudent().getLessons(), a.getClassinvolved()[i].getLessons()) && balanced(a.getClassinvolved()[0], a.getStudent()))
+                {
+                    addStudentClass(a.getStudent(), a.getClassinvolved()[0]);
+                }
+                else{
+                    addStudentClass(a.getStudent(), original);
+                    this->invalidrequest.push(a);
+                    break;
+                }
             }
         }
-        cout << "Student is not in that class";
-        this->invalidrequest.push_back(a);
     }
-    else if (a.getRequest() == 2){
-        if (a.getClassinvolved()[0].getStudents().size() <= 30 && isCompatible(a.getStudent().getLessons(),a.getClassinvolved()[0].getLessons() )){
-            addStudentClass(a.getStudent(), a.getClassinvolved()[0]);
-        }
-        else{this->invalidrequest.push_back(a);cout << "cannot add student to that class";}
-    }
+}
 
+bool Uni::balanced(UCclass uc, Student s) {
+    int a = uc.getStudents().size();
+    int c;
+    for (UCclass uc2 : this->uClasses){
+        auto it = uc2.getStudents().find(s);
+        if (it!= uc2.getStudents().end() && uc2.getUcCode() == uc.getUcCode()){
+            UCclass b = uc2;
+            c = b.getStudents().size();
+            if(a-c >= 3){
+                return false;
+            }
+        }
+    }
+    return true;
 }

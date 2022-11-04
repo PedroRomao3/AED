@@ -4,7 +4,6 @@
 
 #include "Request.h"
 
-
 Request::Request(int request,Student student, const vector<UCclass> &classinvolved) : request(request), student(student), classinvolved(classinvolved) {}
 
 int Request::getRequest()  {

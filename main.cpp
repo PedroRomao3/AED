@@ -16,12 +16,17 @@ int main() {
     readfile1(myFile1Path, uni);
     readfile2(myFile2Path,uni);
     readfile3(myFile3Path, uni);
+    uni->requestmaker(1,202040617,"3LEIC12","L.EIC021");
+    uni->requestmaker(2,202040617,"1LEIC13","L.EIC003");
+    uni->requestHandler();
+
     //requestmake();
     //requestHandle(queue requests);
 
     //while (true){}
     //uni->studentsMoreThenUc(2);
-
+    //1,202040617,3LEIC12,L.EIC021
+    //2,202040617,L.EIC003,1LEIC13
 
     //uni->timeTableStudent();
     //uni->classOcupationandStudents();

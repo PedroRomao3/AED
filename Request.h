@@ -7,7 +7,8 @@
 
 #include <string>
 #include <iostream>
-#include "Uni.h"
+#include "Student.h"
+#include "UCclass.h"
 
 using namespace std;
 

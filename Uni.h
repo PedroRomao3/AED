@@ -5,7 +5,7 @@
 #ifndef PROJAED_UNI_H
 #define PROJAED_UNI_H
 
-
+#include <stack>
 #include <queue>
 #include "Student.h"
 #include "Class.h"
@@ -43,6 +43,8 @@ public:
 
     bool isCompatible(vector<Lesson> timetable, vector<Lesson> classLessons );
 
+    bool balanced(UCclass uc, Student s);
+
     void addtol(Lesson l);
 
     const vector<Lesson> &getLessons() const;
@@ -77,7 +79,7 @@ public:
 
     void setRequests(const queue<Request> &requests);
 
-    void requestmaker();
+    void requestmaker(int request,int studentcode,string classcode, string uccode);
 
     void requestHandler();
 };
