@@ -17,9 +17,9 @@ int main() {
     readfile2(myFile2Path,uni);
     readfile3(myFile3Path, uni);
     uni->requestmaker(1,202040617,"3LEIC12","L.EIC021");
-    uni->requestmaker(2,202040617,"1LEIC13","L.EIC003");
+    uni->requestmaker(2,202025572,"2LEIC16","L.EIC014");
     uni->requestHandler();
-
+    //202025572,Adelaide,L.EIC002,1LEIC13
     //requestmake();
     //requestHandle(queue requests);
 

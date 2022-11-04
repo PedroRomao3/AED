@@ -508,18 +508,23 @@ void Uni::requestHandler() {
         Request a = this->requests.front();
 
         if (a.getRequest() == 1) {
+            int control = 1;
             for (Student s: a.getClassinvolved()[0].getStudents()) {
                 if (s == a.getStudent()) {
                     Uni::removeStudentClass(a.getStudent(), a.getClassinvolved()[0]);
+                    control =0;
                     this->requests.pop();
-                    continue;
+                    break;
                 }
             }
-            cout << "Student is not in that class";
-            this->invalidrequest.push(a);
+            if(control) {
+                cout << "Student is not in that class";
+                this->invalidrequest.push(a);
+            }
         } else if (a.getRequest() == 2) {
             if (a.getClassinvolved()[0].getStudents().size() <= CAP && isCompatible(a.getStudent().getLessons(), a.getClassinvolved()[0].getLessons()) && balanced(a.getClassinvolved()[0], a.getStudent())) {
                 addStudentClass(a.getStudent(), a.getClassinvolved()[0]);
+                this->requests.pop();
             } else {
                 this->invalidrequest.push(a);
                 this->requests.pop();
