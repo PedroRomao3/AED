@@ -60,3 +60,7 @@ void Student::printTimetable() {
         lesson.printLesson();
     }
 }
+
+Student::Student() {
+    this->code = 0;
+}

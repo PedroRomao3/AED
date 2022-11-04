@@ -5,6 +5,7 @@
 #include <iostream>
 #include <algorithm>
 #include <list>
+#include <fstream>
 #include "Uni.h"
 extern int CAP;
 
@@ -296,6 +297,8 @@ void Uni::addStudentClass(Student s, UCclass uc) {
 
         it++;
     }
+
+
     s.setLessons(timet);
     Student hji = s;
     this->students.erase(s);
@@ -363,8 +366,21 @@ void Uni::requestmaker(int request,int studentcode,string classcode, string ucco
             UCclass a = UCclass(uccode,classcode);
             auto it = this->getUClasses().find(a);
             UCclass b = *it;
+            //UCclass b tem repetidos
+            vector<Lesson> final;
+            bool flag;
+            for (Lesson less : b.getLessons()){
+                flag = 1;
+                if (final.empty()) final.push_back(less);
+                for (Lesson lesss : final){
+                    if (lesss.equals(less)) {flag = 0;}
+                }
+                if (flag) final.push_back(less);
+            }
+            b.setLessons(final);
+            //end of modification
             vector<UCclass> classes;
-            classes.push_back(b);
+            classes.push_back(b); //mudei aqui o b para final
             Student s = Student(studentcode);
             for (Student s1:this->getStudents()){
             if (s1.getCode()== s.getCode()){
@@ -591,3 +607,25 @@ bool Uni::balanced(UCclass uc, Student s) {
     }
     return true;
 }
+
+void Uni::writeTimeTableStudent() {
+    int teste;
+    cout << "Insert code: " << endl;
+    cin >> teste;
+    set<Student> estudantes = this->students;
+    Student estudante;
+    for (Student c : estudantes){
+        if (c.getCode() == teste){
+            estudante = c;
+        }
+    }
+    ofstream file ("timetable.txt");
+    for (Lesson les : estudante.getLessons()){
+         file << "Turma: " << les.getClasscode() << "   ";
+         file << "Cadeira: " << les.getUcCode() << "   ";
+         float fin = les.getStart() + les.getDuration();
+         file << "Dia: " << les.getDay() << "   ";
+         file << "Tipo: " << les.getType() << "   ";
+         file << "Hora: " << les.getStart() << " -> " << fin << "\n";;
+         }
+    }

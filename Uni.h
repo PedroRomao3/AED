@@ -82,6 +82,8 @@ public:
     void requestmaker(int request,int studentcode,string classcode, string uccode);
 
     void requestHandler();
+
+    void writeTimeTableStudent();
 };
 
 

@@ -17,6 +17,8 @@ class Student {
 public:
     Student(int code);
 
+    Student();
+
     Student(string name, int code);
 
     Student(string name, int code, vector<Lesson> timetable);
