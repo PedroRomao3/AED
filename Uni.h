@@ -63,6 +63,8 @@ public:
 
     void classOcupationandStudentsbyStudentcode();
 
+    void UclassOcupationandStudents();
+
     void studentsMoreThenUc();
 
     void ucOcupation();
@@ -79,7 +81,7 @@ public:
 
     void setRequests(const queue<Request> &requests);
 
-    void requestmaker(int request,int studentcode,string classcode, string uccode);
+    void requestmaker();
 
     void requestHandler();
 

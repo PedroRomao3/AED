@@ -103,6 +103,23 @@ void Uni::classOcupationandStudents(){
     cout << "Class " << id << " has " << counter << " students";
 }
 
+void Uni::UclassOcupationandStudents(){
+    cout << "Class Code: ";
+    string id;
+    string ucode;
+    int counter;
+    cin >> id;
+    cout << "Class UCode: ";
+    cin>>ucode;
+    UCclass turma = UCclass(ucode,id);
+    UCclass turmavdd = *(uClasses.find(turma));
+    int occupation = turmavdd.getStudents().size();
+    for (Student element : turmavdd.getStudents()){
+        cout << element.getCode() << "    " << element.getName() << endl;
+    }
+    cout << " the class" << id << "of the UC" << ucode << " has " << occupation << " students";
+}
+
 bool comPSC(Student s1, Student s2){
     return s1.getCode() < s2.getCode();
 
@@ -321,22 +338,22 @@ const queue<Request> &Uni::getRequests() const {
 void Uni::setRequests(const queue<Request> &requests) {
     Uni::requests = requests;
 }
-void Uni::requestmaker(int request,int studentcode,string classcode, string uccode ) {
+void Uni::requestmaker() {
     cout<<"enter request code\n";
-    //int request;
-    //cin>>request;
+    int request;
+    cin>>request;
     if (request == 1) {
 
 
         cout << "insert student code\n";
-        //int studentcode;
-        //cin >> studentcode;
+        int studentcode;
+        cin >> studentcode;
         cout << "insert class code\n";
-        //string classcode;
-        //cin >> classcode;
+        string classcode;
+        cin >> classcode;
         cout << "insert uc code\n";
-        //string uccode;
-        //cin >> uccode;
+        string uccode;
+        cin >> uccode;
         UCclass a = UCclass(uccode, classcode);
         auto it = this->getUClasses().find(a);
         UCclass b = *it;
@@ -356,14 +373,14 @@ void Uni::requestmaker(int request,int studentcode,string classcode, string ucco
 
     else if (request == 2){
             cout<<"insert student code\n";
-            //int studentcode;
-           // cin>>studentcode;
+            int studentcode;
+            cin>>studentcode;
             cout<<"insert class code\n";
-            //string classcode;
-            //cin>>classcode;
+            string classcode;
+            cin>>classcode;
             cout<<"insert uc code\n";
-            //string uccode;
-            //cin>>uccode;
+            string uccode;
+            cin>>uccode;
             UCclass a = UCclass(uccode,classcode);
             auto it = this->getUClasses().find(a);
             UCclass b = *it;
@@ -395,15 +412,15 @@ void Uni::requestmaker(int request,int studentcode,string classcode, string ucco
 
     else if (request == 3){
         cout<<"insert student code\n";
-        //int studentcode;
-        //cin>>studentcode;
+        int studentcode;
+        cin>>studentcode;
 
         cout<<"insert class code\n";
-        //string classcode;
-        //cin>>classcode;
+        string classcode;
+        cin>>classcode;
         cout<<"insert uc code\n";
-        //string uccode;
-        //cin>>uccode;
+        string uccode;
+        cin>>uccode;
         UCclass a = UCclass(uccode,classcode);
         auto it = this->getUClasses().find(a);
         UCclass b = *it;
@@ -422,8 +439,8 @@ void Uni::requestmaker(int request,int studentcode,string classcode, string ucco
 
     else if (request == 4) {
         cout << "insert student code\n";
-        //int studentcode;
-        //cin >> studentcode;
+        int studentcode;
+        cin >> studentcode;
         Student s = Student(studentcode);
         for (Student s1:this->getStudents()){
             if (s1.getCode()== s.getCode()){
@@ -432,34 +449,21 @@ void Uni::requestmaker(int request,int studentcode,string classcode, string ucco
             }
         }
         vector<UCclass> classes1;
-        /*while (true) {
+        while (true) {
             cout << "insert class code if done inserting insert q\n";
-            //string classcode;
-            //cin >> classcode;
-            //if (classcode == "q") break;
+            string classcode;
+            cin >> classcode;
+            if (classcode == "q") break;
             cout << "insert uc code\n";
-            //string uccode;
-            //cin >> uccode;
+            string uccode;
+            cin >> uccode;
 
             UCclass a = UCclass(uccode, classcode);
             auto it = this->getUClasses().find(a);
             UCclass b = *it;
             classes1.push_back(b);
-        }*/
-        UCclass uc = UCclass("L.EIC021","3LEIC01");
-        auto it = this->getUClasses().find(uc);
-        UCclass b = *it;
-        classes1.push_back(b);
+        }
 
-        UCclass uc1 = UCclass("L.EIC003","1LEIC13");
-        auto it1 = this->getUClasses().find(uc1);
-        UCclass b1 = *it1;
-        classes1.push_back(b1);
-
-        UCclass uc2 = UCclass("L.EIC004","1LEIC13");
-        auto it2 = this->getUClasses().find(uc1);
-        UCclass b3 = *it2;
-        classes1.push_back(b3);
 
         Request request1 = Request(4, s, classes1);
         this->requests.push(request1);
@@ -586,15 +590,17 @@ void Uni::requestHandler() {
                     }
                 }
                 removeStudentClass(a.getStudent(),original);
+                original = *(this->uClasses.find(original));
                 a = this->getRequests().front();
                 if (a.getClassinvolved()[i].getStudents().size() < CAP &&
                     isCompatible(a.getStudent().getLessons(), a.getClassinvolved()[i].getLessons()) && balanced(a.getClassinvolved()[i], a.getStudent()))
                 {
-                    addStudentClass(a.getStudent(), a.getClassinvolved()[0]);
+                    addStudentClass(a.getStudent(), a.getClassinvolved()[i]);
                 }
                 else{
+
                     addStudentClass(a.getStudent(), original);
-                    cout<< "invalid type 4";
+                    cout<< "invalid type 4\n";
                     this->invalidrequest.push(a);
                 }
             }
