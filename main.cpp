@@ -18,12 +18,14 @@ int main() {
     readfile3(myFile3Path, uni);
     //uni->writeTimeTableStudent();
     //uni->timeTableStudent();
-    //uni->requestmaker(1,202040617,"3LEIC12","L.EIC021");
-    //uni->requestmaker(2,202025572,"2LEIC16","L.EIC014");
+    /*uni->timeTableStudent();*/
+    uni->requestmaker(4,202040617,"3LEIC12","L.EIC021");
     //uni->timeTableStudent();
-    //uni->requestHandler();
+    uni->requestHandler();
+    /*uni->timeTableStudent();*/
+    //uni->writeTimeTableStudent();
     //uni->timeTableStudent();
-    uni->writeTimeTableStudent();
+    //uni->timeTableStudent();
     //202025572,Adelaide,L.EIC002,1LEIC13
     //requestmake();
     //requestHandle(queue requests);
