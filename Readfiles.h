@@ -12,6 +12,11 @@
 #include "Uni.h"
 
 using namespace std;
+/*!
+ * reads information from the file and stores it in the Uni object
+ * @param file filepath to fetch information from
+ * @param uni Uni object that will store the information
+ */
 
 void readfile1(string file, Uni *uni) {
 
@@ -67,6 +72,11 @@ void readfile1(string file, Uni *uni) {
     }
 
 }
+/*!
+ * reads information from the file and stores it in the Uni object
+ * @param file filepath to fetch information from
+ * @param uni Uni object that will store the information
+ */
 
 
 void readfile2(string file, Uni *uni) {
@@ -134,7 +144,11 @@ void readfile2(string file, Uni *uni) {
 
 }
 
-
+/*!
+ * reads information from the file and stores it in the Uni object
+ * @param file filepath to fetch information from
+ * @param uni Uni object that will store the information
+ */
 void readfile3(string file, Uni *uni) {
 
     ifstream in;

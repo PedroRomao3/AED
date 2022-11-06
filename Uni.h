@@ -92,16 +92,32 @@ public:
     const queue<Request> &getRequests() const;
 
     void setRequests(const queue<Request> &requests);
+    /*!
+     * makes the user requests and stores them in a queue for future handling
+     */
 
     void requestmaker();
+    /*!
+     * checks if the student code provided by the input is valid if it is not asks for a new one until it is
+     * @param code first code provded
+     */
 
     void validStudentCode(int &code);
 
     Student returnStudent(int code);
+    /*!
+     * handles the requests made by the user all at once
+     */
 
     void requestHandler();
 
     void writeTimeTableStudent();
+    /*!
+     * exits the schedule manager and stores in files the information for future use
+     * @param filename1 file number one where information will be stored
+     * @param filename2 file number two where information will be stored
+     * @param filename3 file number three where information will be stored
+     */
 
     void saveAndExit(string filename1,string filename2,string filename3);
 };

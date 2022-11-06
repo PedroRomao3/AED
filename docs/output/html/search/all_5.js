@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['getclasscode_0',['getClasscode',['../class_lesson.html#a3971466ca0decda284ef1db1f9798bdc',1,'Lesson']]],
+  ['getclasscode_1',['getClassCode',['../class_class.html#aee163294cfcf12b621db588dd1c33c12',1,'Class::getClassCode()'],['../class_u_cclass.html#a74184635263ed1587e1fc7614b9d2487',1,'UCclass::getClassCode()']]],
+  ['getclasses_2',['getClasses',['../class_uni.html#a7f5df25dd7fe3c171f022ec86b7ac885',1,'Uni']]],
+  ['getclassinvolved_3',['getClassinvolved',['../class_request.html#a03112d4828f74d1c7a25134f2eb12013',1,'Request']]],
+  ['getcode_4',['getCode',['../class_student.html#a81285fde9a9cb150f49621ac58bdb085',1,'Student']]],
+  ['getday_5',['getDay',['../class_lesson.html#a631a85633daef5a2d09bfc6ad4fe9523',1,'Lesson']]],
+  ['getduration_6',['getDuration',['../class_lesson.html#ac56042aa1f5e2bea1e5d6d6c744271d8',1,'Lesson']]],
+  ['getlessons_7',['getLessons',['../class_class.html#a122ad5f15517966ccfab471b4fb05fbc',1,'Class::getLessons()'],['../class_student.html#a343d342823d44d829faf495dc1f07f05',1,'Student::getLessons()'],['../class_u_cclass.html#a7febf5d950fb8907d13873468c732363',1,'UCclass::getLessons()'],['../class_uni.html#a9ba5b23436e640ac5b9c2b40aefb71ff',1,'Uni::getLessons()']]],
+  ['getname_8',['getName',['../class_student.html#abd89cc79098d40204e387e2b57b15716',1,'Student']]],
+  ['getrequest_9',['getRequest',['../class_request.html#a28f9fb83c181cc6a4024cdaa2cad2741',1,'Request']]],
+  ['getrequests_10',['getRequests',['../class_uni.html#a57586eac6e72fcdc844943712f4032c9',1,'Uni']]],
+  ['getstart_11',['getStart',['../class_lesson.html#a0aaba81e79f67ec712ec1d523daf6577',1,'Lesson']]],
+  ['getstudent_12',['getStudent',['../class_request.html#a0164aa4cd5865d11bf426d876b6ce62a',1,'Request']]],
+  ['getstudents_13',['getStudents',['../class_u_cclass.html#a078da78fc3e38ebadd61740bb73699ac',1,'UCclass::getStudents()'],['../class_uni.html#aa26ad5c41ba38665372b45b25fee355c',1,'Uni::getStudents()']]],
+  ['gettype_14',['getType',['../class_lesson.html#a4274b78f8c2da213c6641f7fc08f719c',1,'Lesson']]],
+  ['getuccode_15',['getUcCode',['../class_lesson.html#a3fbec9914b80374dd8d8e1250ae80d33',1,'Lesson::getUcCode()'],['../class_u_cclass.html#a4c7ea20f691d91a2ca2b006c0fd02841',1,'UCclass::getUcCode()']]],
+  ['getuclasses_16',['getUClasses',['../class_uni.html#a270fbf44ef8acf193860851bdef4589e',1,'Uni']]]
+];

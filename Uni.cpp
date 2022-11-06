@@ -235,7 +235,7 @@ void Uni::yearStudent() {
     set<Student> estudantesnoano;
     for (Student s : this->students){
         for(Lesson les : s.getLessons()){
-            
+
             if (les.getClasscode()[0] == year[0]) {
                 estudantesnoano.insert(s);
                 counter++;
