@@ -122,7 +122,7 @@ void Uni::UclassOcupationandStudents(){
     for (Student element : turmavdd.getStudents()){
         cout << element.getCode() << "    " << element.getName() << endl;
     }
-    cout << " the class" << id << "of the UC" << ucode << " has " << occupation << " students";
+    cout << " the class " << id << " of the UC" << ucode << " has " << occupation << " students";
 }
 
 bool comPSC(Student s1, Student s2){
