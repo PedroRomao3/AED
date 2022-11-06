@@ -7,6 +7,7 @@
 #include <list>
 #include <fstream>
 #include "Uni.h"
+#include <iomanip>
 extern int CAP;
 
 
@@ -74,6 +75,7 @@ void Uni::timeTableStudent() {
     int teste;
     cout << "Insert code: " << endl;
     cin >> teste;
+    validStudentCode(teste);
     set<Student> estudantes = this->students;
     for (Student c : estudantes){
         if (c.getCode() == teste){
@@ -87,6 +89,7 @@ void Uni::classOcupationandStudents(){
     string id;
     int counter;
     cin >> id;
+    validClassCode(id);
     set<Student> estudantesnaturma;
     for (Student s : students){
         for (Lesson les : s.getLessons()){
@@ -109,8 +112,10 @@ void Uni::UclassOcupationandStudents(){
     string ucode;
     int counter;
     cin >> id;
+    validClassCode(id);
     cout << "Class UCode: ";
     cin>>ucode;
+    validUCode(ucode);
     UCclass turma = UCclass(ucode,id);
     UCclass turmavdd = *(uClasses.find(turma));
     int occupation = turmavdd.getStudents().size();
@@ -129,6 +134,7 @@ void Uni::classOcupationandStudentsbyStudentcode() {
     string id;
     int counter;
     cin >> id;
+    validClassCode(id);
     set<Student> estudantesnaturma;
     for (Student s : students){
         for (Lesson les : s.getLessons()){
@@ -154,12 +160,41 @@ void Uni::classOcupationandStudentsbyStudentcode() {
     cout << "Class " << id << " has " << counter << " students";
 }
 
+void Uni::UclassOcupationByStudentCode(){
+    cout << "Class Id: ";
+    string id;
+    cin >> id;
+    validClassCode(id);
+    cout<< "ucode";
+    string ucode;
+    cin >>ucode;
+    validUCode(ucode);
+
+
+    UCclass turma = UCclass(ucode,id);
+    UCclass turmavdd = *(uClasses.find(turma));
+
+    list<Student> listaestudantes;
+
+    for (Student s : turmavdd.getStudents()){
+        listaestudantes.push_back(s);
+    }
+
+    listaestudantes.sort(comPSC);
+
+    for (Student element : listaestudantes){
+        cout << element.getCode() << "    " << element.getName() << endl;
+    }
+    cout << "Class " << id <<"of the uc" << ucode << " has " << turmavdd.getStudents().size() << " students";
+}
+
 
 void Uni::ucOcupation() {
     cout << "UCcode: ";
     string id;
     int counter;
     cin >> id;
+    validUCode(id);
     set<Student> estudantesnauc;
     for (Student s : this->students){
         for(Lesson les : s.getLessons()){
@@ -179,26 +214,29 @@ void Uni::ucOcupation() {
 
 void Uni::yearStudent() {
     cout << "Year: ";
-    char id;
+    string year;
     int counter;
-    cin >> id;
+    cin >> year;
+    validyear(year);
     string ano;
-    switch(id){
-        case '1':
+    int switchenter = stoi(year);
+    switch(switchenter){
+        case 1:
             ano = "first";
             break;
-        case '2':
+        case 2:
             ano = "second";
             break;
-        case '3':
+        case 3:
             ano = "third";
             break;
     }
-
+    counter = 0;
     set<Student> estudantesnoano;
     for (Student s : this->students){
         for(Lesson les : s.getLessons()){
-            if (les.getClasscode()[0] == id) {
+            
+            if (les.getClasscode()[0] == year[0]) {
                 estudantesnoano.insert(s);
                 counter++;
                 break;
@@ -209,7 +247,7 @@ void Uni::yearStudent() {
     for (Student element : estudantesnoano){
         cout << element.getCode() << "    " << element.getName() << endl;
     }
-    cout << "The " << ano << " year (" << id << ") has " << counter << " students";
+    cout << "The " << ano << " year (" << year << ") has " << counter << " students";
 }
 
 
@@ -217,6 +255,7 @@ void Uni::studentsMoreThenUc() {
     int n;
     cout << "Mininum uc: ";
     cin >> n;
+    validminimumuc(n);
     cout<<"The following students have more than " << n << " UCs:\n";
     set<string> ucs;
     set<Student> more;
@@ -339,21 +378,40 @@ void Uni::setRequests(const queue<Request> &requests) {
     Uni::requests = requests;
 }
 void Uni::requestmaker() {
-    cout<<"enter request code\n";
+
+
+    cout << "Remove  a student from a class                                     [1]" <<
+         endl;
+    cout << "Add student to a class                                             [2]" <<
+         endl;
+    cout << "Change student class                                               [3]" <<
+         endl;
+    cout << "Change various classes of a student                                [4]" <<
+         endl;
+    cout << "Go back                                                            [5]" <<
+         endl;
+    cout << "Please choose what is your option:" << endl <<
+         endl;
+
     int request;
     cin>>request;
+    validrequest(request);
+    if (request == 5){ return;}
     if (request == 1) {
 
 
         cout << "insert student code\n";
         int studentcode;
         cin >> studentcode;
+        validStudentCode(studentcode);
         cout << "insert class code\n";
         string classcode;
         cin >> classcode;
+        validClassCode(classcode);
         cout << "insert uc code\n";
         string uccode;
         cin >> uccode;
+        validUCode(uccode);
         UCclass a = UCclass(uccode, classcode);
         auto it = this->getUClasses().find(a);
         UCclass b = *it;
@@ -375,12 +433,15 @@ void Uni::requestmaker() {
             cout<<"insert student code\n";
             int studentcode;
             cin>>studentcode;
+            validStudentCode(studentcode);
             cout<<"insert class code\n";
             string classcode;
             cin>>classcode;
+            validClassCode(classcode);
             cout<<"insert uc code\n";
             string uccode;
             cin>>uccode;
+            validUCode(uccode);
             UCclass a = UCclass(uccode,classcode);
             auto it = this->getUClasses().find(a);
             UCclass b = *it;
@@ -414,13 +475,16 @@ void Uni::requestmaker() {
         cout<<"insert student code\n";
         int studentcode;
         cin>>studentcode;
+        validStudentCode(studentcode);
 
         cout<<"insert class code\n";
         string classcode;
         cin>>classcode;
+        validClassCode(classcode);
         cout<<"insert uc code\n";
         string uccode;
         cin>>uccode;
+        validUCode(uccode);
         UCclass a = UCclass(uccode,classcode);
         auto it = this->getUClasses().find(a);
         UCclass b = *it;
@@ -441,6 +505,7 @@ void Uni::requestmaker() {
         cout << "insert student code\n";
         int studentcode;
         cin >> studentcode;
+        validStudentCode(studentcode);
         Student s = Student(studentcode);
         for (Student s1:this->getStudents()){
             if (s1.getCode()== s.getCode()){
@@ -453,10 +518,12 @@ void Uni::requestmaker() {
             cout << "insert class code if done inserting insert q\n";
             string classcode;
             cin >> classcode;
+            validClassCode(classcode);
             if (classcode == "q") break;
             cout << "insert uc code\n";
             string uccode;
             cin >> uccode;
+            validUCode(uccode);
 
             UCclass a = UCclass(uccode, classcode);
             auto it = this->getUClasses().find(a);
@@ -630,6 +697,7 @@ void Uni::writeTimeTableStudent() {
     int teste;
     cout << "Insert code: " << endl;
     cin >> teste;
+    validStudentCode(teste);
     set<Student> estudantes = this->students;
     Student estudante;
     for (Student c : estudantes){
@@ -637,7 +705,13 @@ void Uni::writeTimeTableStudent() {
             estudante = c;
         }
     }
-    ofstream file ("timetable.txt");
+    string of = "../StudentsTimetables/timetable";
+    int a = estudante.getCode();
+    auto of1 = to_string(a);
+    string of2 = ".txt";
+    string offinal = of + of1 + of2;
+
+    ofstream file (offinal);
     for (Lesson les : estudante.getLessons()){
          file << "Turma: " << les.getClasscode() << "   ";
          file << "Cadeira: " << les.getUcCode() << "   ";
@@ -646,4 +720,161 @@ void Uni::writeTimeTableStudent() {
          file << "Tipo: " << les.getType() << "   ";
          file << "Hora: " << les.getStart() << " -> " << fin << "\n";;
          }
+    file.close();
     }
+
+void Uni::saveAndExit(string filename1,string filename2,string filename3){
+    ofstream classesFile("../schedule/" + filename1);
+    classesFile << "classCode,ucCode,Weekday,StartHour,Duration,Type\n";
+    for(UCclass uCclass:this->getUClasses()){
+        for(Lesson l : uCclass.getLessons()){
+            classesFile << l.getClasscode()<<",";
+            classesFile << l.getUcCode()<<",";
+            classesFile << l.getDay()<<",";
+
+            classesFile << setprecision(2) << l.getStart() << ",";
+            classesFile << setprecision(2) << l.getDuration() << ",";
+            classesFile << l.getType()<<"\n";
+        }
+    }
+    classesFile.close();
+
+    ofstream classespucFile("../schedule/" + filename2);
+    classespucFile << "ucCode,classCode\n";
+    for(UCclass uCclass:this->getUClasses()){
+        classespucFile << uCclass.getUcCode() << ",";
+        classespucFile << uCclass.getClassCode() << "\n";
+    }
+    classespucFile.close();
+
+    ofstream classesStudentFile("../schedule/" + filename3);
+    classesStudentFile << "StudentCode,StudentName,ucCode,classCode\n";
+    set<Lesson> setL;
+    for(Student s : this->getStudents()){
+        for (Lesson l : s.getLessons()) {
+            if (l.getType() == "TP" || l.getType() == "PL") {
+
+            classesStudentFile << to_string(s.getCode()) << ",";
+            classesStudentFile << s.getName() << ",";
+            classesStudentFile << l.getUcCode() << ",";
+            classesStudentFile << l.getClasscode() << "\n";
+
+            }
+
+        }
+    }
+
+    classesStudentFile.close();
+    exit(0);
+}
+
+void Uni::validStudentCode(int &code) {
+    bool flag = 1;
+    for (Student s: this->students ){
+        if (s.getCode() == code) {flag = 0;}
+    }
+    while (cin.fail() || flag)
+    {
+
+        cout << "Invalid option, please insert the option again: ";
+        cin.clear();
+        cin.ignore(100, '\n');
+        cin >> code;
+        for (Student s: this->students ){
+            if (s.getCode() == code) {flag = 0;}
+        }
+    }
+    cin.clear();
+    cin.ignore(100, '\n');
+}
+
+Student Uni::returnStudent(int code) {
+    return Student(code);
+}
+
+
+void Uni::validClassCode(string &code) {
+    bool flag = 1;
+    for (Class s: this->classes){
+        if (s.getClassCode() == code) {flag = 0;}
+    }
+    while (cin.fail() || flag)
+    {
+
+        cout << "Invalid option, please insert the option again: ";
+        cin.clear();
+        cin.ignore(100, '\n');
+        cin >> code;
+        for (Class s: this->classes){
+            if (s.getClassCode() == code) {flag = 0;}
+        }
+    }
+    cin.clear();
+    cin.ignore(100, '\n');
+}
+
+void Uni::validUCode(string &code) {
+    bool flag = 1;
+    for (UCclass uc: this->uClasses) {
+        if (uc.getUcCode() == code) { flag = 0; }
+    }
+
+        while (cin.fail() || flag) {
+
+            cout << "Invalid option, please insert the option again: ";
+            cin.clear();
+            cin.ignore(100, '\n');
+            cin >> code;
+            for (UCclass uc: this->uClasses) {
+                if (uc.getUcCode() == code) { flag = 0; }
+            }
+        }
+        cin.clear();
+        cin.ignore(100, '\n');
+    }
+
+
+
+
+
+void Uni::validyear(string &code) {
+    bool flag = 1;
+    if ((code == "1") || (code == "2") || (code == "3")) flag = 0;
+        while (cin.fail() || flag){
+            cout << "Invalid option, please insert the option again: ";
+            cin.clear();
+            cin.ignore(100, '\n');
+            cin >> code;
+            if ((code == "1") || (code == "2") || (code == "3")) flag = 0;
+        }
+        cin.clear();
+        cin.ignore(100, '\n');
+}
+
+
+void Uni::validminimumuc(int &code) {
+    while (cin.fail() || code <= 0 || code > 20) {
+        cout << "Invalid option, please insert the option again: ";
+        cin.clear();
+        cin.ignore(100, '\n');
+        cin >> code;
+    }
+    cin.clear();
+    cin.ignore(100, '\n');
+}
+
+
+void Uni::validrequest(int &code) {
+    while (cin.fail() || code <= 0 || code > 5) {
+        cout << "Invalid option, please insert the option again: ";
+        cin.clear();
+        cin.ignore(100, '\n');
+        cin >> code;
+    }
+    cin.clear();
+    cin.ignore(100, '\n');
+}
+
+
+
+

@@ -4,11 +4,15 @@
 
 #ifndef PROJAED_MENU_H
 #define PROJAED_MENU_H
+#include "Uni.h"
 
 
-class Menu {
+class Menu: public Uni {
 public:
     Menu();
+    void runMenu(Uni *uni);
+    void menuSeparator();
+    void validOption(int &option,int optionsNumber);
 
 };
 

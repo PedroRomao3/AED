@@ -1,0 +1,9 @@
+Turma: 1LEIC04   Cadeira: L.EIC003   Dia: Thursday   Tipo: TP   Hora: 8 -> 10
+Turma: 1LEIC04   Cadeira: L.EIC003   Dia: Friday   Tipo: T   Hora: 10 -> 11
+Turma: 1LEIC04   Cadeira: L.EIC003   Dia: Wednesday   Tipo: T   Hora: 9.5 -> 10.5
+Turma: 2LEIC11   Cadeira: L.EIC011   Dia: Monday   Tipo: TP   Hora: 14.5 -> 16.5
+Turma: 2LEIC11   Cadeira: L.EIC011   Dia: Thursday   Tipo: T   Hora: 14.5 -> 15.5
+Turma: 2LEIC11   Cadeira: L.EIC011   Dia: Tuesday   Tipo: T   Hora: 8 -> 9
+Turma: 2LEIC11   Cadeira: L.EIC012   Dia: Tuesday   Tipo: TP   Hora: 10.5 -> 12.5
+Turma: 2LEIC11   Cadeira: L.EIC012   Dia: Wednesday   Tipo: T   Hora: 10.5 -> 11.5
+Turma: 2LEIC11   Cadeira: L.EIC012   Dia: Friday   Tipo: T   Hora: 18 -> 19

@@ -25,6 +25,8 @@ public:
 
     Student operator=(Student s1);
 
+
+
     string getName();
 
     int getCode() const;

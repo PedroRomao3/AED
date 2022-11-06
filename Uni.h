@@ -27,9 +27,19 @@ public:
 
     const set<Student> &getStudents() const;
 
+    void validClassCode(string &code);
+
     void setStudents(const set<Student> &students);
 
+    void validUCode(string &code);
+
+    void validyear(string &code);
+
     const set<Class> getClasses() const;
+
+    void validminimumuc(int &code);
+
+    void validrequest(int &code);
 
     void setClasses(const set<Class> &classes);
 
@@ -38,6 +48,8 @@ public:
     void removeStudent(Student s1);
 
     void removeStudentClass(Student s, UCclass uc);
+
+    void UclassOcupationByStudentCode();
 
     void addStudentClass(Student s, UCclass uc);
 
@@ -83,9 +95,15 @@ public:
 
     void requestmaker();
 
+    void validStudentCode(int &code);
+
+    Student returnStudent(int code);
+
     void requestHandler();
 
     void writeTimeTableStudent();
+
+    void saveAndExit(string filename1,string filename2,string filename3);
 };
 
 

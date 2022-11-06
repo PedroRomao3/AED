@@ -36,10 +36,10 @@ UCclass UCclass::operator=(UCclass uc1) {
 }
 
 bool UCclass::operator<(UCclass uc1) const {
-    if(uc1.classCode == this->classCode){
-        return (uc1.ucCode < this->ucCode);
+    if(uc1.ucCode == this->ucCode){
+        return (uc1.classCode > this->classCode);
     }
-    else{return (uc1.classCode < this->classCode);}
+    else{return (uc1.ucCode > this->ucCode);}
 }
 
 bool UCclass::operator==(UCclass uc1) {
