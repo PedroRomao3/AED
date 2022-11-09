@@ -661,6 +661,10 @@ void Uni::requestHandler() {
                         original = uc2;
                     }
                 }
+                if(original == a.getClassinvolved()[i]){
+                    cout<<"invalid type 4\n";
+                    continue;
+                }
                 a.setStudent(*(this->students.find(a.getStudent())));
                 removeStudentClass(a.getStudent(),original);
                 original = *(this->uClasses.find(original));
