@@ -605,6 +605,8 @@ void Uni::requestHandler() {
             if(control) {
                 cout << "Student is not in that class";
                 this->invalidrequest.push(a);
+                this->requests.pop();
+                continue;
             }
         } else if (a.getRequest() == 2) {
             if (a.getClassinvolved()[0].getStudents().size() <= CAP && isCompatible(a.getStudent().getLessons(), a.getClassinvolved()[0].getLessons()) && balanced(a.getClassinvolved()[0], a.getStudent())) {
@@ -632,11 +634,13 @@ void Uni::requestHandler() {
                 continue;
             }
             removeStudentClass(a.getStudent(),original);
+            original = *(this->uClasses.find(original));
             a = this->getRequests().front();
             //a.getclassinvolved().pop()
             if (a.getClassinvolved()[0].getStudents().size() < CAP && isCompatible(a.getStudent().getLessons(), a.getClassinvolved()[0].getLessons()) && balanced(a.getClassinvolved()[0], a.getStudent()))
             {
                 addStudentClass(a.getStudent(), a.getClassinvolved()[0]);
+                this->requests.pop();
             }
             else{
                 addStudentClass(a.getStudent(), original);
@@ -644,7 +648,7 @@ void Uni::requestHandler() {
                 this->invalidrequest.push(a);
                 this->requests.pop();
             }
-            this->requests.pop();
+
 
 
         }else if (a.getRequest() == 4){
@@ -656,6 +660,7 @@ void Uni::requestHandler() {
                         original = uc2;
                     }
                 }
+                a.setStudent(*(this->students.find(a.getStudent())));
                 removeStudentClass(a.getStudent(),original);
                 original = *(this->uClasses.find(original));
                 a = this->getRequests().front();
@@ -795,6 +800,7 @@ Student Uni::returnStudent(int code) {
 
 void Uni::validClassCode(string &code) {
     bool flag = 1;
+    if(code == "q"){flag = 0;}
     for (Class s: this->classes){
         if (s.getClassCode() == code) {flag = 0;}
     }

@@ -53,12 +53,14 @@ public:
     /*!
      * verifies if the UcCode is possible
      * @param code string representing a UcCode
-     */
+     * Complexity(n)
+     * */
     void validUCode(string &code);
 
     /*!
      * verifies if the Year is valid
      * @param code string representing the year
+     * Complexity: O(n)
      */
     void validyear(string &code);
 
@@ -96,6 +98,7 @@ public:
     /*!
      * remove student from uni
      * @param s1 a Student that we want to remove from the students of the uni
+     * Complexity: O(n)
      */
     void removeStudent(Student s1);
 
@@ -103,6 +106,7 @@ public:
      *  removes student from class/UC
      * @param s a Student we want to remove
      * @param uc a UCclass representing the UCclass of the student
+     * Complexity: O(n)
      */
     void removeStudentClass(Student s, UCclass uc);
 
