@@ -633,6 +633,7 @@ void Uni::requestHandler() {
                 this->requests.pop();
                 continue;
             }
+            a.setStudent(*(this->students.find(a.getStudent())));
             removeStudentClass(a.getStudent(),original);
             original = *(this->uClasses.find(original));
             a = this->getRequests().front();
